@@ -8,18 +8,51 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, NSURLConnectionDelegate {
+    
+    var data = NSMutableData()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.connectReddit()
+    }
+    
+    func connectReddit() {
+        let urlPath: String = "http://www.reddit.com/r/aww/hot.json"
+        var url = NSURL(string: urlPath)!
+        var request = NSURLRequest(URL: url)
+        var connection = NSURLConnection(request: request, delegate: self, startImmediately: false)!
+        connection.start()
+    }
+    
+    func connection(connection: NSURLConnection!, didReceiveData data: NSData!){
+        self.data.appendData(data)
+    }
+    
+    func connectionDidFinishLoading(connection: NSURLConnection!) {
+        var err: NSError?
+        // throwing an error on the line below (can't figure out where the error message is)
+        let jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+        println(jsonResult)
+        
+        let json = JSON(data: data)
+        let authorName = json.dictionaryValue
+        println(authorName)
+    }
+    
 
 
 }
+
+
+
 

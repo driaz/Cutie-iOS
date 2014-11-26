@@ -13,6 +13,7 @@
 		42A4F7F81A206F0100693ED2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42A4F7F71A206F0100693ED2 /* Images.xcassets */; };
 		42A4F7FB1A206F0100693ED2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42A4F7F91A206F0100693ED2 /* LaunchScreen.xib */; };
 		42A4F8071A206F0100693ED2 /* Aww2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A4F8061A206F0100693ED2 /* Aww2Tests.swift */; };
+		42A4F8111A206F5900693ED2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A4F8101A206F5900693ED2 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		42A4F8001A206F0100693ED2 /* Aww2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Aww2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		42A4F8051A206F0100693ED2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42A4F8061A206F0100693ED2 /* Aww2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aww2Tests.swift; sourceTree = "<group>"; };
+		42A4F8101A206F5900693ED2 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = "../../../SwiftyJSON-master/SwiftyJSON/SwiftyJSON.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		42A4F7ED1A206F0100693ED2 /* Aww2 */ = {
 			isa = PBXGroup;
 			children = (
+				42A4F8101A206F5900693ED2 /* SwiftyJSON.swift */,
 				42A4F7F01A206F0100693ED2 /* AppDelegate.swift */,
 				42A4F7F21A206F0100693ED2 /* ViewController.swift */,
 				42A4F7F41A206F0100693ED2 /* Main.storyboard */,
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42A4F8111A206F5900693ED2 /* SwiftyJSON.swift in Sources */,
 				42A4F7F31A206F0100693ED2 /* ViewController.swift in Sources */,
 				42A4F7F11A206F0100693ED2 /* AppDelegate.swift in Sources */,
 			);
