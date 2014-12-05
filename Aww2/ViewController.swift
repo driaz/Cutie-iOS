@@ -8,12 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController, NSURLConnectionDelegate {
+class ViewController: UITableViewController, NSURLConnectionDelegate {
     
     var data = NSMutableData()
+    var authorArray = [AnyObject]()
+    var titleArray = [AnyObject]()
+    var numCommentsArray = [AnyObject]()
+    var pointScoreArray = [AnyObject]()
+    var urlArray = [AnyObject]()
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.connectReddit()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -23,7 +32,6 @@ class ViewController: UIViewController, NSURLConnectionDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.connectReddit()
     }
     
     func connectReddit() {
@@ -39,17 +47,38 @@ class ViewController: UIViewController, NSURLConnectionDelegate {
     }
     
     func connectionDidFinishLoading(connection: NSURLConnection!) {
-        var err: NSError?
-        // throwing an error on the line below (can't figure out where the error message is)
-        let jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
-        println(jsonResult)
         
         let json = JSON(data: data)
-        let authorName = json.dictionaryValue
-        println(authorName)
+        
+        let listings =  json["data"]["children"]
+        
+            for var i = 0; i < listings.arrayValue!.count; i++ {
+                var authorData = listings[i]["data"]["author"]
+                var titleData = json["data"]["children"][i]["data"]["title"]
+                var numCommentsData = json["data"]["children"][i]["data"]["num_comments"]
+                var pointScoreData = json["data"]["children"][i]["data"]["score"]
+                var urlData = json["data"]["children"][i]["data"]["url"]
+                
+                var listingCount = json["data"]["children"]
+                
+        
+                authorArray.append(authorData.stringValue ?? "")
+                titleArray.append(titleData.stringValue ?? "")
+                numCommentsArray.append(numCommentsData.numberValue ?? "")
+                pointScoreArray.append(pointScoreData.numberValue ?? "")
+                urlArray.append(urlData.stringValue ?? "")
+                
+                }
+        
+        println(authorArray[2])
+        println(titleArray[2])
+        println(numCommentsArray[2])
+        println(pointScoreArray[2])
+        println(urlArray[2])
+        
+
     }
     
-
 
 }
 
