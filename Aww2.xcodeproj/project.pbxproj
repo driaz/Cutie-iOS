@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		423EEA0E1A369BFC0083A6D7 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423EEA0D1A369BFC0083A6D7 /* PostCell.swift */; };
 		428DBCE01A312EBE0092FC15 /* RedditPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428DBCDF1A312EBE0092FC15 /* RedditPost.swift */; };
 		42A4F7F11A206F0100693ED2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A4F7F01A206F0100693ED2 /* AppDelegate.swift */; };
 		42A4F7F31A206F0100693ED2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A4F7F21A206F0100693ED2 /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		423EEA0D1A369BFC0083A6D7 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		428DBCDF1A312EBE0092FC15 /* RedditPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditPost.swift; sourceTree = "<group>"; };
 		42A4F7EB1A206F0100693ED2 /* Aww2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aww2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42A4F7EF1A206F0100693ED2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				42A4F8101A206F5900693ED2 /* SwiftyJSON.swift */,
 				42A4F7F01A206F0100693ED2 /* AppDelegate.swift */,
 				42A4F7F21A206F0100693ED2 /* ViewController.swift */,
+				423EEA0D1A369BFC0083A6D7 /* PostCell.swift */,
 				428DBCDF1A312EBE0092FC15 /* RedditPost.swift */,
 				42A4F7F41A206F0100693ED2 /* Main.storyboard */,
 				42A4F7F71A206F0100693ED2 /* Images.xcassets */,
@@ -222,6 +225,7 @@
 				428DBCE01A312EBE0092FC15 /* RedditPost.swift in Sources */,
 				42A4F7F31A206F0100693ED2 /* ViewController.swift in Sources */,
 				42A4F7F11A206F0100693ED2 /* AppDelegate.swift in Sources */,
+				423EEA0E1A369BFC0083A6D7 /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

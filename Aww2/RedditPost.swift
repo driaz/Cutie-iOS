@@ -10,15 +10,21 @@ import Foundation
 
 class RedditPost {
     
+    var author: String
+    var title: String
+    var numComments: Int
+    var pointScore: Int
+    var url: String
+//    var data = NSMutableData()
+
     
-    
-    
-    init()
-    
-    
-    
-    
-    
-    
-    
+    init(author: String, title: String, numComments: Int, pointScore: Int, url: String) {
+        self.author = author
+        self.title = title
+        self.numComments = numComments
+        self.pointScore = pointScore
+        self.url = url
+    }
 }
+    
+    

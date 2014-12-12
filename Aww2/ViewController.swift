@@ -8,30 +8,22 @@
 
 import UIKit
 
-class ViewController: UITableViewController, NSURLConnectionDelegate {
+class ViewController: UITableViewController, NSURLConnectionDelegate, UITableViewDelegate, UITableViewDataSource {
+    
     
     var data = NSMutableData()
-    var authorArray = [AnyObject]()
-    var titleArray = [AnyObject]()
-    var numCommentsArray = [AnyObject]()
-    var pointScoreArray = [AnyObject]()
-    var urlArray = [AnyObject]()
-
+    var redditPostArray = [RedditPost]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.connectReddit()
-
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     func connectReddit() {
@@ -49,37 +41,73 @@ class ViewController: UITableViewController, NSURLConnectionDelegate {
     func connectionDidFinishLoading(connection: NSURLConnection!) {
         
         let json = JSON(data: data)
+        if let jsonPosts =  json["data"]["children"].arrayValue {
+    
         
-        let listings =  json["data"]["children"]
-        
-            for var i = 0; i < listings.arrayValue!.count; i++ {
-                var authorData = listings[i]["data"]["author"]
-                var titleData = json["data"]["children"][i]["data"]["title"]
-                var numCommentsData = json["data"]["children"][i]["data"]["num_comments"]
-                var pointScoreData = json["data"]["children"][i]["data"]["score"]
-                var urlData = json["data"]["children"][i]["data"]["url"]
+            for jsonPost in jsonPosts {
+                var author = jsonPost["data"]["author"].stringValue ?? ""
+                var title = jsonPost["data"]["title"].stringValue ?? ""
+                var numComments = jsonPost["data"]["num_comments"].integerValue ?? 0
+                var pointScore = jsonPost["data"]["score"].integerValue ?? 0
+                var url = jsonPost["data"]["url"].stringValue ?? ""
+                let post = RedditPost(author: author, title: title, numComments: numComments, pointScore: pointScore, url: url)
+                redditPostArray.append(post)
                 
-                var listingCount = json["data"]["children"]
-                
-        
-                authorArray.append(authorData.stringValue ?? "")
-                titleArray.append(titleData.stringValue ?? "")
-                numCommentsArray.append(numCommentsData.numberValue ?? "")
-                pointScoreArray.append(pointScoreData.numberValue ?? "")
-                urlArray.append(urlData.stringValue ?? "")
-                
-                }
-        
-        println(authorArray[2])
-        println(titleArray[2])
-        println(numCommentsArray[2])
-        println(pointScoreArray[2])
-        println(urlArray[2])
-        
+            }
+            tableView.reloadData()
+        }
 
     }
     
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("blah") as PostCell
+        let post = redditPostArray[indexPath.row]
+        cell.titleLabel.text = post.title
+//        cell.titleLabel.sizeToFit()
+        cell.authorLabel.text = "by \(post.author)"
+        
+//        var postURL: NSURL = NSURL(string: post.url)!
+//        var data2: NSData = NSData(contentsOfURL: postURL)!
+//        cell.listingImageView.image = UIImage(data: data2)
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> () in
+            
+            var postURL: NSURL = NSURL(string: post.url)!
+            var data2: NSData = NSData(contentsOfURL: postURL)!
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                cell.listingImageView.image = UIImage(data: data2)
+            })
+        })
+        
+        return cell
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        tableView.reloadData()
+        
+    }
 
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        println(redditPostArray.count)
+        return redditPostArray.count
+    
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+       return 1
+    }
+    
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension;
+    }
+
+    
+    
 }
 
 
