@@ -16,12 +16,31 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        loginButton.layer.borderColor = UIColor.whiteColor().CGColor
+        createAccount.layer.borderColor = UIColor.whiteColor().CGColor
         
+        var fbData = FBSession.activeSession().accessTokenData
         
+        if (fbData != nil) {
+            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("mainfeed") as ViewController
+            
+            self.showViewController(viewController, sender: nil)
+            
+            println("testing 123")
+        }
+        else {
+            println("fbData is nil")
+            
+        }
+    
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 
     override func didReceiveMemoryWarning() {

@@ -22,11 +22,12 @@
 		4208D1EB1A661B5000937598 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4208D1EA1A661B5000937598 /* Parse.framework */; };
 		4208D1F01A661E1700937598 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4208D1EF1A661E1700937598 /* Bolts.framework */; };
 		420A53A01A5BA96A00A2F79D /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 420A539F1A5BA96A00A2F79D /* Placeholder.png */; };
+		4233499B1A92A3AB00FD0258 /* secondNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4233499A1A92A3AB00FD0258 /* secondNavController.swift */; };
 		423EEA0E1A369BFC0083A6D7 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423EEA0D1A369BFC0083A6D7 /* PostCell.swift */; };
+		4262CF6F1A93359700F1668D /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 4262CF6E1A93359700F1668D /* loading.png */; };
 		427589391A6DDE1100075EE5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427589381A6DDE1100075EE5 /* SignUpViewController.swift */; };
-		427C7DB31A3B9287008DC95F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427C7DB21A3B9287008DC95F /* Main.storyboard */; };
+		42762D211A8FE5D400E06345 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42762D201A8FE5D400E06345 /* FavoritesViewController.swift */; };
 		427C7DB81A3BA17E008DC95F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427C7DB61A3BA17E008DC95F /* SecondViewController.swift */; };
-		428BAA151A89778200C20A14 /* cutieKeyArt2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 428BAA141A89778200C20A14 /* cutieKeyArt2.jpg */; };
 		428DBCE01A312EBE0092FC15 /* RedditPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428DBCDF1A312EBE0092FC15 /* RedditPost.swift */; };
 		42A4F7F11A206F0100693ED2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A4F7F01A206F0100693ED2 /* AppDelegate.swift */; };
 		42A4F7F31A206F0100693ED2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A4F7F21A206F0100693ED2 /* ViewController.swift */; };
@@ -34,9 +35,12 @@
 		42A4F7FB1A206F0100693ED2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42A4F7F91A206F0100693ED2 /* LaunchScreen.xib */; };
 		42A4F8071A206F0100693ED2 /* Aww2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A4F8061A206F0100693ED2 /* Aww2Tests.swift */; };
 		42A4F8111A206F5900693ED2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A4F8101A206F5900693ED2 /* SwiftyJSON.swift */; };
+		42B63D211A93063C0033F11A /* cutieKeyArt_2.16.15.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 42B63D201A93063C0033F11A /* cutieKeyArt_2.16.15.jpg */; };
 		42BCADC91A717F0E008DEC73 /* myNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCADC81A717F0E008DEC73 /* myNavigationController.swift */; };
 		42C9AE3F1A685C55008F59BA /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C9AE3E1A685C55008F59BA /* libsqlite3.0.dylib */; };
 		42E7B6201A6B6FE200941E5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E7B61F1A6B6FE200941E5D /* LoginViewController.swift */; };
+		42F7049A1A8C38B2000B2836 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42F704991A8C38B1000B2836 /* Main.storyboard */; };
+		42FC28A21A91BFD000D5B7D9 /* cutieKeyArt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 42FC28A11A91BFD000D5B7D9 /* cutieKeyArt.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,11 +70,12 @@
 		4208D1EC1A661B8900937598 /* Aww2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aww2-Bridging-Header.h"; sourceTree = "<group>"; };
 		4208D1EF1A661E1700937598 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		420A539F1A5BA96A00A2F79D /* Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder.png; sourceTree = "<group>"; };
+		4233499A1A92A3AB00FD0258 /* secondNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = secondNavController.swift; path = ../secondNavController.swift; sourceTree = "<group>"; };
 		423EEA0D1A369BFC0083A6D7 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		4262CF6E1A93359700F1668D /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		427589381A6DDE1100075EE5 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		427C7DB21A3B9287008DC95F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../../../.Trash/Main.storyboard; sourceTree = "<group>"; };
+		42762D201A8FE5D400E06345 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		427C7DB61A3BA17E008DC95F /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecondViewController.swift; path = ../SecondViewController.swift; sourceTree = "<group>"; };
-		428BAA141A89778200C20A14 /* cutieKeyArt2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cutieKeyArt2.jpg; sourceTree = "<group>"; };
 		428DBCDF1A312EBE0092FC15 /* RedditPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditPost.swift; sourceTree = "<group>"; };
 		42A4F7EB1A206F0100693ED2 /* Aww2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aww2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42A4F7EF1A206F0100693ED2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,9 +87,12 @@
 		42A4F8051A206F0100693ED2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42A4F8061A206F0100693ED2 /* Aww2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aww2Tests.swift; sourceTree = "<group>"; };
 		42A4F8101A206F5900693ED2 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = "../../../SwiftyJSON-master/SwiftyJSON/SwiftyJSON.swift"; sourceTree = "<group>"; };
+		42B63D201A93063C0033F11A /* cutieKeyArt_2.16.15.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cutieKeyArt_2.16.15.jpg; sourceTree = "<group>"; };
 		42BCADC81A717F0E008DEC73 /* myNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myNavigationController.swift; sourceTree = "<group>"; };
 		42C9AE3E1A685C55008F59BA /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		42E7B61F1A6B6FE200941E5D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
+		42F704991A8C38B1000B2836 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		42FC28A11A91BFD000D5B7D9 /* cutieKeyArt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cutieKeyArt.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +165,10 @@
 		42A4F7ED1A206F0100693ED2 /* Aww2 */ = {
 			isa = PBXGroup;
 			children = (
-				428BAA141A89778200C20A14 /* cutieKeyArt2.jpg */,
+				4262CF6E1A93359700F1668D /* loading.png */,
+				42B63D201A93063C0033F11A /* cutieKeyArt_2.16.15.jpg */,
+				4233499A1A92A3AB00FD0258 /* secondNavController.swift */,
+				42FC28A11A91BFD000D5B7D9 /* cutieKeyArt.jpg */,
 				42E7B61F1A6B6FE200941E5D /* LoginViewController.swift */,
 				420A539F1A5BA96A00A2F79D /* Placeholder.png */,
 				427C7DB61A3BA17E008DC95F /* SecondViewController.swift */,
@@ -166,7 +177,8 @@
 				42A4F7F21A206F0100693ED2 /* ViewController.swift */,
 				423EEA0D1A369BFC0083A6D7 /* PostCell.swift */,
 				428DBCDF1A312EBE0092FC15 /* RedditPost.swift */,
-				427C7DB21A3B9287008DC95F /* Main.storyboard */,
+				42F704991A8C38B1000B2836 /* Main.storyboard */,
+				42762D201A8FE5D400E06345 /* FavoritesViewController.swift */,
 				42BCADC81A717F0E008DEC73 /* myNavigationController.swift */,
 				427589381A6DDE1100075EE5 /* SignUpViewController.swift */,
 				42A4F7F71A206F0100693ED2 /* Images.xcassets */,
@@ -281,11 +293,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				427C7DB31A3B9287008DC95F /* Main.storyboard in Resources */,
 				420A53A01A5BA96A00A2F79D /* Placeholder.png in Resources */,
-				428BAA151A89778200C20A14 /* cutieKeyArt2.jpg in Resources */,
+				42F7049A1A8C38B2000B2836 /* Main.storyboard in Resources */,
+				42B63D211A93063C0033F11A /* cutieKeyArt_2.16.15.jpg in Resources */,
+				42FC28A21A91BFD000D5B7D9 /* cutieKeyArt.jpg in Resources */,
 				42A4F7FB1A206F0100693ED2 /* LaunchScreen.xib in Resources */,
 				42A4F7F81A206F0100693ED2 /* Images.xcassets in Resources */,
+				4262CF6F1A93359700F1668D /* loading.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42E7B6201A6B6FE200941E5D /* LoginViewController.swift in Sources */,
+				4233499B1A92A3AB00FD0258 /* secondNavController.swift in Sources */,
 				427C7DB81A3BA17E008DC95F /* SecondViewController.swift in Sources */,
 				427589391A6DDE1100075EE5 /* SignUpViewController.swift in Sources */,
 				42A4F8111A206F5900693ED2 /* SwiftyJSON.swift in Sources */,
@@ -311,6 +326,7 @@
 				428DBCE01A312EBE0092FC15 /* RedditPost.swift in Sources */,
 				42A4F7F31A206F0100693ED2 /* ViewController.swift in Sources */,
 				42A4F7F11A206F0100693ED2 /* AppDelegate.swift in Sources */,
+				42762D211A8FE5D400E06345 /* FavoritesViewController.swift in Sources */,
 				423EEA0E1A369BFC0083A6D7 /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,6 +442,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -446,6 +463,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

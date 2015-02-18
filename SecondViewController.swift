@@ -9,6 +9,10 @@
 import UIKit
 import Foundation
 
+//protocol SVCDelegate {
+//    func passDataToFVC(passedArray: [RedditPost])
+//}
+
 class SecondViewController: UIViewController, UITableViewDelegate {
 
     var detailPost: RedditPost?
@@ -17,6 +21,8 @@ class SecondViewController: UIViewController, UITableViewDelegate {
     // passing in redditPostArray from ViewController to SecondViewController class  and storing it here
     
     var detailPostIndexPosition = Int()
+    
+//    var delegate: SVCDelegate?
 
     @IBOutlet weak var SVCImageView: UIImageView!
     
@@ -32,6 +38,10 @@ class SecondViewController: UIViewController, UITableViewDelegate {
         
         self.presentViewController(alertController, animated: true, completion: nil)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+        
+//       delegate?.passDataToFVC(favoriteArray)
+       let FVC = storyboard?.instantiateViewControllerWithIdentifier("favoritesID") as FavoritesViewController
+        FVC.FVCArray = favoriteArray
         
     }
     
@@ -55,25 +65,10 @@ class SecondViewController: UIViewController, UITableViewDelegate {
         
     }
     
-//        @IBAction func swipe(sender: AnyObject) {
-//            
-//        println("Swiping")
-//        println(detailPostIndexPosition)
-//        detailPostIndexPosition++
-//        SVCAuthorLabel.text = "by \(inboundArrayFromVC[detailPostIndexPosition].author)"
-//        SVCTextLabel.text = inboundArrayFromVC[detailPostIndexPosition].title
-//        var SVCImageViewUrl: String = inboundArrayFromVC[detailPostIndexPosition].url
-//        var imageURL: NSURL = NSURL(string: SVCImageViewUrl)!
-//        var imageData: NSData = NSData(contentsOfURL: imageURL)!
-//        var theImage = UIImage(data: imageData)
-//        SVCImageView.image = theImage
-//
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+   
         // Do any additional setup after loading the view.
         
     }
