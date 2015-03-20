@@ -6,18 +6,38 @@
 //  Copyright (c) 2015 Daniel Riaz. All rights reserved.
 //
 
+//will be observer - 
+//NSnotification Center
+
+//setup one class to be observer (FavoritesViewController)
+//setup "posting the notification"
+
 import UIKit
+import Foundation
 
 class FavoritesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var favoritesView: UITableView!
+    @IBOutlet weak var navItem: UINavigationItem!
     
-    var FVCArray = [RedditPost]()
+    var testDebugger = "testing123"
+    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let logo = UIImage(named: "BlackLogo")
+        let imageView = UIImageView(image:logo)
+        self.navItem.titleView = imageView
+        self.favoritesView.backgroundColor = UIColor.blackColor()
 
         // Do any additional setup after loading the view.
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        println("view does appear upon click")
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,13 +45,10 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
-//    func passDataToFVC(passedArray: [RedditPost]) {
-//        self.FVCArray = passedArray
-//    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.favoritesView.dequeueReusableCellWithIdentifier("favoritesCell") as PostCell
-        let post = FVCArray[indexPath.row]
+        let cell = self.favoritesView.dequeueReusableCellWithIdentifier("FavoritesCell") as PostCell
+        let post = appDelegate.appDelegateFavorites[indexPath.row]
         cell.selectionStyle = .None
         cell.configureWithRedditPost(post)
         return cell
@@ -39,9 +56,18 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return FVCArray.count
+        let count = appDelegate.appDelegateFavorites.count
+        return count
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return favoritesView.frame.width * 1.0
+    }
+    
+     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+
 
 
     /*

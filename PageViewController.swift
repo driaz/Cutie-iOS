@@ -1,24 +1,27 @@
 //
-//  secondNavController.swift
+//  PageViewController.swift
 //  Aww2
 //
-//  Created by Daniel Riaz on 2/16/15.
+//  Created by Daniel Riaz on 2/19/15.
 //  Copyright (c) 2015 Daniel Riaz. All rights reserved.
 //
 
 import UIKit
 
-class secondNavController: UINavigationController {
+class PageViewController: UIPageViewController {
 
+    @IBOutlet var navItem: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tabBarItem.selectedImage = UIImage(named: "paw_print_filled")
-        
-    
-
+        let logo = UIImage(named: "BlackLogo")
+        let imageView = UIImageView(image:logo)
+        self.navItem.titleView = imageView
         // Do any additional setup after loading the view.
+        
+        self.automaticallyAdjustsScrollViewInsets = false
+        
+//        self.edgesForExtendedLayout = UIRectEdge.None
     }
 
     override func didReceiveMemoryWarning() {

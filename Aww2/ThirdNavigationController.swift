@@ -1,22 +1,24 @@
 //
-//  secondNavController.swift
+//  ThirdNavigationController.swift
 //  Aww2
 //
-//  Created by Daniel Riaz on 2/16/15.
+//  Created by Daniel Riaz on 3/17/15.
 //  Copyright (c) 2015 Daniel Riaz. All rights reserved.
 //
 
+//This navigation controller is pointless right now...it's used only to link
+
 import UIKit
 
-class secondNavController: UINavigationController {
+class ThirdNavigationController: UINavigationController {
 
+    @IBOutlet var navItem: UINavigationItem!
     
+    @IBOutlet weak var navBar: UINavigationBar!
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.navItem.title = "test test"
         
-        tabBarItem.selectedImage = UIImage(named: "paw_print_filled")
-        
-    
 
         // Do any additional setup after loading the view.
     }

@@ -9,40 +9,28 @@
 import UIKit
 import Foundation
 
-//protocol SVCDelegate {
-//    func passDataToFVC(passedArray: [RedditPost])
-//}
 
 class SecondViewController: UIViewController, UITableViewDelegate {
 
     var detailPost: RedditPost?
-    var favoriteArray = [RedditPost]()
-    var inboundArrayFromVC = [RedditPost]()
-    // passing in redditPostArray from ViewController to SecondViewController class  and storing it here
-    
+//    var inboundArrayFromVC = [RedditPost]()
     var detailPostIndexPosition = Int()
-    
-//    var delegate: SVCDelegate?
 
+    @IBOutlet weak var SVCActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var SVCImageView: UIImageView!
-    
     @IBOutlet weak var SVCTextLabel: UILabel!
-        
-    @IBOutlet weak var SVCAuthorLabel: UILabel!
+    @IBOutlet weak var navItem: UINavigationItem!
     
     @IBAction func saveToFavorites(sender: AnyObject) {
        
-        favoriteArray.append(detailPost!)
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        appDelegate.appDelegateFavorites.append(detailPost!)
         
         let alertController = UIAlertController(title: "Success!", message: "Added to your favorites.", preferredStyle: UIAlertControllerStyle.Alert)
         
         self.presentViewController(alertController, animated: true, completion: nil)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
-        
-//       delegate?.passDataToFVC(favoriteArray)
-       let FVC = storyboard?.instantiateViewControllerWithIdentifier("favoritesID") as FavoritesViewController
-        FVC.FVCArray = favoriteArray
-        
+
     }
     
     @IBAction func shareIt(sender: AnyObject) {
@@ -60,6 +48,7 @@ class SecondViewController: UIViewController, UITableViewDelegate {
         
         self.presentViewController(activityVC, animated: true, completion: nil)
         
+        
         //mail is completely fucked...crashes when I try to type...
         //need to combine imageArray and shareArray
         
@@ -67,30 +56,58 @@ class SecondViewController: UIViewController, UITableViewDelegate {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-   
+//        let logo = UIImage(named: "BlackLogo")
+//        let imageView = UIImageView(image:logo)
+//        self.navItem.titleView = imageView
+        self.navItem.title = "Hope!"
+
+    
         // Do any additional setup after loading the view.
         
     }
     
     override func viewWillAppear(animated: Bool) {
         self.SVCTextLabel.text = detailPost?.title
-        self.SVCAuthorLabel.text = "by \(detailPost!.author)"
+        self.SVCImageView.image = UIImage(named: "loading")
+        self.SVCActivityIndicator.startAnimating()
+//        self.SVCAuthorLabel.text = "by \(detailPost!.author)"
+    
+        var str = self.detailPost!.url
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> () in
+        //Lower loading times by adding "l" at the end of the image URL
+        var components = NSURLComponents(string: str)
+        var filePath = components?.path
+        let range = filePath?.rangeOfString(".", options: NSStringCompareOptions.BackwardsSearch)
+        
+        if let range = range {
+            filePath = filePath!.substringToIndex(range.startIndex) + "l" + filePath!.substringFromIndex(range.startIndex)
+        }
+    
+        
+        components?.path = filePath
+        var URL = components?.URL
+        
+        var request = NSMutableURLRequest(URL: URL!)
+        request.HTTPMethod = "GET"
+        request.setValue("image/jpeg", forHTTPHeaderField: "Accept")
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {[weak self] response, data, error in
             
-            var postURL: NSURL = NSURL(string: self.detailPost!.url)!
-
-            let dataOptional = NSData(contentsOfURL: postURL)
-            if let data = dataOptional {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.SVCImageView.image = UIImage(data: data)
-                })
+            if (error != nil) {
+                println("Errored when attempting to fetch \(URL)")
+                return
             }
             
-        })
-
-        
+            var image = UIImage(data: data)
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self?.SVCImageView.image = image!
+                self?.SVCActivityIndicator.stopAnimating()
+                self?.SVCActivityIndicator.hidesWhenStopped = true
+            })
+        }
     }
 
     override func didReceiveMemoryWarning() {
