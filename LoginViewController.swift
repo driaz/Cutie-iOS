@@ -19,33 +19,58 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
     @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
+        
+        
         self.fbLoginView.delegate = self
         self.fbLoginView.readPermissions = ["public_profile", "email", "user_friends"]
         
         var testThis = FBSession.activeSession().accessTokenData
         
-////        if (testThis != nil) {
-////            performSegueWithIdentifier("showTBVC", sender: self)
-////        }
+        if (testThis != nil) {
+            logInToFacebook()
+            performSegueWithIdentifier("showTBVC", sender: self)
+        }
         
-        
-                PFFacebookUtils.logInWithPermissions(fbLoginView.readPermissions, {
-                    (user: PFUser!, error: NSError!) -> Void in
-                    if user == nil {
-                        NSLog("Uh oh. The user cancelled the Facebook login.")
-                    } else if user.isNew {
-                        NSLog("User signed up and logged in through Facebook!")
-                    } else {
-                        NSLog("User logged in through Facebook!")
-                    }
-                    
-                })
         
         // This code is provided by parse, it is supposed to prompt the FB Login and pass FB Login data to Parse's backend. Currently it is getting me an error with the FBLoginView object I created (it shows "log in" even when the user is still logged in).
-
+    }
+    
+    func logInToFacebook() {
+        
+        PFFacebookUtils.logInWithPermissions(fbLoginView.readPermissions, block: {
+            (user: PFUser!, error: NSError!) -> Void in
+            if user == nil {
+                NSLog("Uh oh. The user cancelled the Facebook login.")
+            } else if user.isNew {
+                NSLog("User signed up and logged in through Facebook!")
+            } else {
+                NSLog("User logged in through Facebook!")
+            }
+            
+        })
+    }
+    
+    func facebookLoginDidComplete () {
+        var testThis = FBSession.activeSession().accessTokenData
+        
+        if (testThis != nil) {
+            logInToFacebook()
+            performSegueWithIdentifier("showTBVC", sender: self)
+        }
         
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "observeApplicationDidBecomeActiveNotification", name: nil, object: nil)
+    }
+    
+    
+    override func viewDidDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     
     override func prefersStatusBarHidden() -> Bool {
         return true

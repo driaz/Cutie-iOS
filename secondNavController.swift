@@ -10,12 +10,18 @@ import UIKit
 
 class secondNavController: UINavigationController {
 
+    @IBOutlet var navTitle: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tabBarItem.selectedImage = UIImage(named: "paw_print_filled")
         
+//        self.navTitle.title = "testing 123"
+        
+        
+        
+    
     
 
         // Do any additional setup after loading the view.

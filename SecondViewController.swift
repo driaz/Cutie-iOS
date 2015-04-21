@@ -13,8 +13,8 @@ import Foundation
 class SecondViewController: UIViewController, UITableViewDelegate {
 
     var detailPost: RedditPost?
-//    var inboundArrayFromVC = [RedditPost]()
     var detailPostIndexPosition = Int()
+    var svcIndexPath: NSIndexPath? = NSIndexPath()
 
     @IBOutlet weak var SVCActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var SVCImageView: UIImageView!
@@ -23,7 +23,7 @@ class SecondViewController: UIViewController, UITableViewDelegate {
     
     @IBAction func saveToFavorites(sender: AnyObject) {
        
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.appDelegateFavorites.append(detailPost!)
         
         let alertController = UIAlertController(title: "Success!", message: "Added to your favorites.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -62,6 +62,9 @@ class SecondViewController: UIViewController, UITableViewDelegate {
 //        let imageView = UIImageView(image:logo)
 //        self.navItem.titleView = imageView
         self.navItem.title = "Hope!"
+        self.navigationController?.navigationItem.title = "testing"
+        
+
 
     
         // Do any additional setup after loading the view.
@@ -102,11 +105,14 @@ class SecondViewController: UIViewController, UITableViewDelegate {
             
             var image = UIImage(data: data)
             
+            if (image != nil){
+            
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self?.SVCImageView.image = image!
                 self?.SVCActivityIndicator.stopAnimating()
                 self?.SVCActivityIndicator.hidesWhenStopped = true
             })
+            }
         }
     }
 
@@ -114,6 +120,7 @@ class SecondViewController: UIViewController, UITableViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
 
 

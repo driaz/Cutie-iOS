@@ -12,7 +12,7 @@
 		</dict>
 	</array>
 	<key>FacebookDisplayName</key>
-	<string>Cutesy</string>
+	<string>Cutie</string>
 	<key>FacebookAppID</key>
 	<string>1538847433036854</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -20,7 +20,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>Daniel-Riaz.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>com.digidesigns.$(PRODUCT_NAME:rfc1034identifier)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

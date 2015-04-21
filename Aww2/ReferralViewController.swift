@@ -12,7 +12,7 @@ class ReferralViewController: UIViewController {
     
     @IBAction func shareCutie(sender: AnyObject) {
 
-        var shareMessage: String = "Cutie is so cute!"
+        var shareMessage: String = "The Cutie app is sooo cute! Check it out at http://www.cutieapp.net"
         
         var shareActivityVC: UIActivityViewController = UIActivityViewController(activityItems: [shareMessage], applicationActivities: nil)
         
@@ -35,10 +35,6 @@ class ReferralViewController: UIViewController {
         shareButton.layer.shadowOpacity = 0.8
         shareButton.layer.shadowRadius = 1
         shareButton.layer.shadowOffset = CGSizeMake(2.0, 2.0)
-        
-        
-
-
 
         // Do any additional setup after loading the view.
     }
@@ -46,6 +42,15 @@ class ReferralViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        
+        if (self.view.frame.width == 320 && self.view.frame.height == 480) {
+            return true
+        }
+        
+        return false
     }
     
 

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h2Q-RZ-1sN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h2Q-RZ-1sN">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="OU9-wc-xeg">
             <objects>
-                <viewController id="h2Q-RZ-1sN" customClass="LoginViewController" customModule="Aww2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="h2Q-RZ-1sN" customClass="LoginViewController" customModule="Cutie" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g7T-OD-QzT"/>
                         <viewControllerLayoutGuide type="bottom" id="KI1-gO-R2t"/>
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyartrnd5_3.06.2015.png" translatesAutoresizingMaskIntoConstraints="NO" id="TdA-KY-eSe">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LVC" translatesAutoresizingMaskIntoConstraints="NO" id="TdA-KY-eSe">
                                 <rect key="frame" x="0.0" y="-5" width="320" height="584"/>
                             </imageView>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KdJ-7b-I36" customClass="FBLoginView">
@@ -74,13 +74,13 @@
         <!--Favorites-->
         <scene sceneID="A1j-8t-bAk">
             <objects>
-                <viewController storyboardIdentifier="favoritesID" title="Favorites" id="d7H-WA-XFs" customClass="FavoritesViewController" customModule="Aww2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="favoritesID" title="Favorites" id="d7H-WA-XFs" customClass="FavoritesViewController" customModule="Cutie" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="240" sectionHeaderHeight="22" sectionFooterHeight="22" id="ctq-jV-wwK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoritesCell" rowHeight="320" id="w4S-A5-GG0" customClass="PostCell" customModule="Aww2" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoritesCell" rowHeight="320" id="w4S-A5-GG0" customClass="PostCell" customModule="Cutie" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w4S-A5-GG0" id="RrA-Au-qrP">
@@ -146,7 +146,7 @@
         <!--Referral Feature-->
         <scene sceneID="sbF-0e-Lkf">
             <objects>
-                <viewController title="Referral Feature" id="1AL-P8-Zms" customClass="ReferralViewController" customModule="Aww2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Referral Feature" id="1AL-P8-Zms" customClass="ReferralViewController" customModule="Cutie" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tc4-lM-RgM"/>
                         <viewControllerLayoutGuide type="bottom" id="dpY-JQ-IWE"/>
@@ -155,13 +155,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyartrnd5_3.06.2015.png" translatesAutoresizingMaskIntoConstraints="NO" id="QKy-nu-vBc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shareImage" translatesAutoresizingMaskIntoConstraints="NO" id="QKy-nu-vBc">
                                 <rect key="frame" x="0.0" y="-9" width="320" height="569"/>
                             </imageView>
                             <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3Y-r3-RDL">
                                 <rect key="frame" x="92" y="434" width="137" height="39"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="19"/>
                                 <state key="normal" title="Share Cutie">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -205,7 +205,7 @@
         <!--Main Feed-->
         <scene sceneID="KBa-y5-TiB">
             <objects>
-                <viewController storyboardIdentifier="mainfeed" title="Main Feed" id="Ir8-nu-XTt" customClass="ViewController" customModule="Aww2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainfeed" title="Main Feed" id="Ir8-nu-XTt" customClass="ViewController" customModule="Cutie" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="320" sectionHeaderHeight="22" sectionFooterHeight="22" id="iog-4z-hO8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -238,7 +238,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CatCell" rowHeight="320" id="h1D-5C-Q9z" customClass="PostCell" customModule="Aww2" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CatCell" rowHeight="320" id="h1D-5C-Q9z" customClass="PostCell" customModule="Cutie" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="h1D-5C-Q9z" id="5NK-dl-NFh">
@@ -254,21 +254,21 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="4UV-V6-CVL">
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="4UV-V6-CVL">
                                             <rect key="frame" x="150" y="150" width="20" height="20"/>
                                             <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </activityIndicatorView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="1wb-Sn-iN0" secondAttribute="trailing" constant="-8" id="1wn-KC-KKT"/>
-                                        <constraint firstItem="Wr5-1x-vDl" firstAttribute="top" secondItem="5NK-dl-NFh" secondAttribute="topMargin" constant="-8" id="3PF-ir-jbe"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Wr5-1x-vDl" secondAttribute="trailing" constant="-8" id="3sn-MR-cJp"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="1wb-Sn-iN0" secondAttribute="bottom" constant="-8" id="50v-g7-be1"/>
-                                        <constraint firstItem="1wb-Sn-iN0" firstAttribute="leading" secondItem="5NK-dl-NFh" secondAttribute="leadingMargin" constant="-8" id="FW1-yS-T7W"/>
+                                        <constraint firstAttribute="trailing" secondItem="1wb-Sn-iN0" secondAttribute="trailing" id="1wn-KC-KKT"/>
+                                        <constraint firstItem="Wr5-1x-vDl" firstAttribute="top" secondItem="5NK-dl-NFh" secondAttribute="top" id="3PF-ir-jbe"/>
+                                        <constraint firstAttribute="trailing" secondItem="Wr5-1x-vDl" secondAttribute="trailing" id="3sn-MR-cJp"/>
+                                        <constraint firstAttribute="bottom" secondItem="1wb-Sn-iN0" secondAttribute="bottom" id="50v-g7-be1"/>
+                                        <constraint firstItem="1wb-Sn-iN0" firstAttribute="leading" secondItem="5NK-dl-NFh" secondAttribute="leading" id="FW1-yS-T7W"/>
                                         <constraint firstItem="Wr5-1x-vDl" firstAttribute="centerY" secondItem="4UV-V6-CVL" secondAttribute="centerY" id="GOv-go-8Vw"/>
                                         <constraint firstItem="Wr5-1x-vDl" firstAttribute="centerX" secondItem="4UV-V6-CVL" secondAttribute="centerX" id="Hfv-dL-pJc"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Wr5-1x-vDl" secondAttribute="bottom" constant="-9" id="NC0-Hz-KPI"/>
-                                        <constraint firstItem="Wr5-1x-vDl" firstAttribute="leading" secondItem="5NK-dl-NFh" secondAttribute="leadingMargin" constant="-8" id="dIP-Ig-SRP"/>
+                                        <constraint firstAttribute="bottom" secondItem="Wr5-1x-vDl" secondAttribute="bottom" constant="-1" id="NC0-Hz-KPI"/>
+                                        <constraint firstItem="Wr5-1x-vDl" firstAttribute="leading" secondItem="5NK-dl-NFh" secondAttribute="leading" id="dIP-Ig-SRP"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -299,22 +299,22 @@
         <!--Page View Controller-->
         <scene sceneID="Eo2-xz-CaR">
             <objects>
-                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="b1H-hy-snI" customClass="PageViewController" customModule="Aww2" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="b1H-hy-snI" customClass="PageViewController" customModule="Cutie" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="navItem" destination="vWy-YU-4f0" id="hUu-OQ-wRC"/>
-                        <segue destination="GIO-13-SN6" kind="show" identifier="pvcTOsvc" id="fNQ-l2-Ai2"/>
+                        <segue destination="VLJ-hi-GXj" kind="show" id="kdH-gZ-PE1"/>
                     </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVu-Dy-kmr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationItem title="Title" id="vWy-YU-4f0"/>
             </objects>
-            <point key="canvasLocation" x="2061" y="188"/>
+            <point key="canvasLocation" x="2163" y="187"/>
         </scene>
         <!--SecondViewController-->
         <scene sceneID="6TA-jl-QFl">
             <objects>
-                <viewController storyboardIdentifier="SecondViewController" id="VLJ-hi-GXj" userLabel="SecondViewController" customClass="SecondViewController" customModule="Aww2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SecondViewController" id="VLJ-hi-GXj" userLabel="SecondViewController" customClass="SecondViewController" customModule="Cutie" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GjB-4e-UZD"/>
                         <viewControllerLayoutGuide type="bottom" id="HCj-S8-gb2"/>
@@ -381,9 +381,9 @@
                             <constraint firstItem="HCj-S8-gb2" firstAttribute="top" secondItem="eya-pE-Rsk" secondAttribute="bottom" constant="35" id="Rt1-6g-nkr"/>
                             <constraint firstItem="DC2-vN-Lha" firstAttribute="leading" secondItem="KgM-da-s8j" secondAttribute="leadingMargin" id="XIV-ix-n9p"/>
                             <constraint firstItem="pQP-ce-H58" firstAttribute="centerY" secondItem="KgM-da-s8j" secondAttribute="centerY" id="ZeB-zx-5dD"/>
-                            <constraint firstItem="eya-pE-Rsk" firstAttribute="top" secondItem="DC2-vN-Lha" secondAttribute="bottom" constant="8" symbolic="YES" id="bUe-1a-Q8X"/>
                             <constraint firstItem="qIH-bD-Axx" firstAttribute="leading" secondItem="eya-pE-Rsk" secondAttribute="trailing" constant="33" id="e6a-Fl-uRl"/>
                             <constraint firstItem="pQP-ce-H58" firstAttribute="centerX" secondItem="DC2-vN-Lha" secondAttribute="centerX" id="enh-Va-DY1"/>
+                            <constraint firstItem="eya-pE-Rsk" firstAttribute="top" secondItem="DC2-vN-Lha" secondAttribute="bottom" constant="8" id="gC3-Wx-dc8"/>
                             <constraint firstItem="qIH-bD-Axx" firstAttribute="baseline" secondItem="eya-pE-Rsk" secondAttribute="baseline" id="iMi-Ks-qdw"/>
                             <constraint firstItem="pQP-ce-H58" firstAttribute="centerX" secondItem="tno-zr-aTg" secondAttribute="centerX" id="kkP-K0-x18"/>
                             <constraint firstItem="pQP-ce-H58" firstAttribute="leading" secondItem="KgM-da-s8j" secondAttribute="leading" id="nOO-jg-J3k"/>
@@ -400,12 +400,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5j-GK-uey" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3000" y="188"/>
+            <point key="canvasLocation" x="2648" y="187"/>
         </scene>
         <!--Home-->
         <scene sceneID="yYy-Jr-vEn">
             <objects>
-                <navigationController storyboardIdentifier="navigation1" automaticallyAdjustsScrollViewInsets="NO" id="cQk-ns-sl7" customClass="secondNavController" customModule="Aww2" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navigation1" automaticallyAdjustsScrollViewInsets="NO" id="cQk-ns-sl7" customClass="secondNavController" customModule="Cutie" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="paw_print" selectedImage="paw_print_filled" id="LhM-U0-dng"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WXY-DF-emm">
@@ -414,6 +414,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
+                        <outlet property="navTitle" destination="jtc-jw-bMd" id="Zhn-LI-Wqg"/>
                         <segue destination="Ir8-nu-XTt" kind="relationship" relationship="rootViewController" id="uIT-QD-nDf"/>
                     </connections>
                 </navigationController>
@@ -425,7 +426,7 @@
         <!--Favorites-->
         <scene sceneID="kmU-dP-b9o">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OAh-Gh-GbE" customClass="FavNavController" customModule="Aww2" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OAh-Gh-GbE" customClass="FavNavController" customModule="Cutie" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favorites" image="heart" selectedImage="heart_filled" id="1ip-cS-cxi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tTt-w6-rk1">
@@ -441,34 +442,14 @@
             </objects>
             <point key="canvasLocation" x="1128" y="1254"/>
         </scene>
-        <!--Third Navigation Controller-->
-        <scene sceneID="slZ-03-myT">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GIO-13-SN6" customClass="ThirdNavigationController" customModule="Aww2" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OB4-EP-L57">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <outlet property="navBar" destination="OB4-EP-L57" id="Uml-mG-B9s"/>
-                        <outlet property="navItem" destination="UfT-ZK-hZz" id="TT3-cb-jNg"/>
-                        <segue destination="VLJ-hi-GXj" kind="relationship" relationship="rootViewController" id="FUG-wp-DIt"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NaW-t1-sPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationItem title="Navigation Item" id="UfT-ZK-hZz"/>
-            </objects>
-            <point key="canvasLocation" x="2468" y="188"/>
-        </scene>
     </scenes>
     <resources>
+        <image name="LVC" width="375" height="667"/>
         <image name="heart" width="32" height="32"/>
         <image name="heart_filled" width="32" height="32"/>
-        <image name="keyartrnd5_3.06.2015.png" width="750" height="1334"/>
         <image name="paw_print" width="32" height="32"/>
         <image name="paw_print_filled" width="32" height="32"/>
+        <image name="shareImage" width="375" height="667"/>
         <image name="users_two" width="32" height="32"/>
         <image name="users_two_filled" width="32" height="32"/>
     </resources>

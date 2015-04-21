@@ -20,6 +20,7 @@ class PageViewController: UIPageViewController {
         // Do any additional setup after loading the view.
         
         self.automaticallyAdjustsScrollViewInsets = false
+
         
 //        self.edgesForExtendedLayout = UIRectEdge.None
     }

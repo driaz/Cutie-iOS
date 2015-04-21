@@ -20,8 +20,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet var favoritesView: UITableView!
     @IBOutlet weak var navItem: UINavigationItem!
     
-    var testDebugger = "testing123"
-    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     
     override func viewDidLoad() {
@@ -47,10 +46,11 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.favoritesView.dequeueReusableCellWithIdentifier("FavoritesCell") as PostCell
+        let cell = self.favoritesView.dequeueReusableCellWithIdentifier("FavoritesCell") as! PostCell
         let post = appDelegate.appDelegateFavorites[indexPath.row]
         cell.selectionStyle = .None
-        cell.configureWithRedditPost(post)
+        //cell.configureWithRedditPost(post)
+        
         return cell
 
     }

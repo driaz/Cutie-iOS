@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "42A4F7EA1A206F0100693ED2"
-               BuildableName = "Aww2.app"
-               BlueprintName = "Aww2"
-               ReferencedContainer = "container:Aww2.xcodeproj">
+               BuildableName = "Cutie.app"
+               BlueprintName = "Cutie"
+               ReferencedContainer = "container:Cutie.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "42A4F7FF1A206F0100693ED2"
-               BuildableName = "Aww2Tests.xctest"
-               BlueprintName = "Aww2Tests"
-               ReferencedContainer = "container:Aww2.xcodeproj">
+               BuildableName = "CutieTests.xctest"
+               BlueprintName = "CutieTests"
+               ReferencedContainer = "container:Cutie.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "42A4F7FF1A206F0100693ED2"
-               BuildableName = "Aww2Tests.xctest"
-               BlueprintName = "Aww2Tests"
-               ReferencedContainer = "container:Aww2.xcodeproj">
+               BuildableName = "CutieTests.xctest"
+               BlueprintName = "CutieTests"
+               ReferencedContainer = "container:Cutie.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "42A4F7EA1A206F0100693ED2"
-            BuildableName = "Aww2.app"
-            BlueprintName = "Aww2"
-            ReferencedContainer = "container:Aww2.xcodeproj">
+            BuildableName = "Cutie.app"
+            BlueprintName = "Cutie"
+            ReferencedContainer = "container:Cutie.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -72,13 +72,14 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "42A4F7EA1A206F0100693ED2"
-            BuildableName = "Aww2.app"
-            BlueprintName = "Aww2"
-            ReferencedContainer = "container:Aww2.xcodeproj">
+            BuildableName = "Cutie.app"
+            BlueprintName = "Cutie"
+            ReferencedContainer = "container:Cutie.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -90,13 +91,14 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "42A4F7EA1A206F0100693ED2"
-            BuildableName = "Aww2.app"
-            BlueprintName = "Aww2"
-            ReferencedContainer = "container:Aww2.xcodeproj">
+            BuildableName = "Cutie.app"
+            BlueprintName = "Cutie"
+            ReferencedContainer = "container:Cutie.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

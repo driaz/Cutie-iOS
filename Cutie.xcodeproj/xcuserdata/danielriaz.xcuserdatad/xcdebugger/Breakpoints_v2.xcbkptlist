@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aww2/ViewController.swift"
-            timestampString = "448344588.172852"
+            timestampString = "450067475.980897"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "connectReddit()"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aww2/ViewController.swift"
-            timestampString = "448344588.172852"
+            timestampString = "448942771.390068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "ViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -72,6 +72,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "Aww2.SecondViewController.__deallocating_deinit"
                   moduleName = "Aww2"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/danielriaz/Desktop/Thinkful/Xcode/Aww2%20/SecondViewController.swift"
                   timestampString = "440200534.859178"
                   startingColumnNumber = "9223372036854775807"
@@ -86,6 +87,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "@objc Aww2.SecondViewController.__ivar_destroyer"
                   moduleName = "Aww2"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/danielriaz/Desktop/Thinkful/Xcode/Aww2%20/SecondViewController.swift"
                   timestampString = "440200534.859498"
                   startingColumnNumber = "9223372036854775807"
@@ -118,6 +120,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "Aww2.SecondViewController.__deallocating_deinit"
                   moduleName = "Aww2"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/danielriaz/Desktop/Thinkful/Xcode/Aww2%20/SecondViewController.swift"
                   timestampString = "440545324.551803"
                   startingColumnNumber = "9223372036854775807"
@@ -132,6 +135,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "@objc Aww2.SecondViewController.__ivar_destroyer"
                   moduleName = "Aww2"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/danielriaz/Desktop/Thinkful/Xcode/Aww2%20/SecondViewController.swift"
                   timestampString = "440545324.552237"
                   startingColumnNumber = "9223372036854775807"
@@ -150,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aww2/PostCell.swift"
-            timestampString = "447138627.665099"
+            timestampString = "451350500.12514"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
             landmarkName = "PostCell"
             landmarkType = "3">
          </BreakpointContent>
@@ -182,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aww2/ViewController.swift"
-            timestampString = "448509048.307791"
+            timestampString = "451350500.12514"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
             landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -230,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aww2/ViewController.swift"
-            timestampString = "448344588.172852"
+            timestampString = "450067475.980897"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "connectReddit()"
             landmarkType = "5">
          </BreakpointContent>
@@ -260,6 +264,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "Aww2.ViewController.__deallocating_deinit"
                   moduleName = "Aww2"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/danielriaz/Desktop/Thinkful/Xcode/Aww2%20/Aww2/ViewController.swift"
                   timestampString = "442803447.832518"
                   startingColumnNumber = "9223372036854775807"
@@ -274,6 +279,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "@objc Aww2.ViewController.__ivar_destroyer"
                   moduleName = "Aww2"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/danielriaz/Desktop/Thinkful/Xcode/Aww2%20/Aww2/ViewController.swift"
                   timestampString = "442803447.832787"
                   startingColumnNumber = "9223372036854775807"
@@ -388,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aww2/RedditPost.swift"
-            timestampString = "445150604.732764"
+            timestampString = "451349583.003638"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45">
+            startingLineNumber = "46"
+            endingLineNumber = "46">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -402,11 +408,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SecondViewController.swift"
-            timestampString = "448495190.883288"
+            timestampString = "448943402.961059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
             landmarkName = "SecondViewController"
             landmarkType = "3">
             <Locations>
@@ -416,6 +422,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "Aww2.SecondViewController.SVCTextLabel.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UILabel&gt;"
                   moduleName = "Aww2"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/danielriaz/Desktop/Thinkful/Xcode/Aww2%20/SecondViewController.swift"
                   timestampString = "445150843.536413"
                   startingColumnNumber = "9223372036854775807"
@@ -430,6 +437,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "Aww2.SecondViewController.SVCTextLabel.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UILabel&gt;"
                   moduleName = "Aww2"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/danielriaz/Desktop/Thinkful/Xcode/Aww2%20/SecondViewController.swift"
                   timestampString = "445150843.536684"
                   startingColumnNumber = "9223372036854775807"
@@ -444,6 +452,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "Aww2.SecondViewController.SVCTextLabel.materializeForSet : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UILabel&gt;"
                   moduleName = "Aww2"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/danielriaz/Desktop/Thinkful/Xcode/Aww2%20/SecondViewController.swift"
                   timestampString = "445150843.536875"
                   startingColumnNumber = "9223372036854775807"
@@ -458,6 +467,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "Aww2.SecondViewController.init (Aww2.SecondViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; Aww2.SecondViewController"
                   moduleName = "Aww2"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/danielriaz/Desktop/Thinkful/Xcode/Aww2%20/SecondViewController.swift"
                   timestampString = "445150843.537108"
                   startingColumnNumber = "9223372036854775807"
@@ -472,6 +482,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "Aww2.SecondViewController.init (Aww2.SecondViewController.Type)() -&gt; Aww2.SecondViewController"
                   moduleName = "Aww2"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/danielriaz/Desktop/Thinkful/Xcode/Aww2%20/SecondViewController.swift"
                   timestampString = "445150843.537288"
                   startingColumnNumber = "9223372036854775807"
@@ -486,6 +497,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "Aww2.SecondViewController.init (Aww2.SecondViewController.Type)(coder : ObjectiveC.NSCoder) -&gt; Aww2.SecondViewController"
                   moduleName = "Aww2"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/danielriaz/Desktop/Thinkful/Xcode/Aww2%20/SecondViewController.swift"
                   timestampString = "445150843.537464"
                   startingColumnNumber = "9223372036854775807"
@@ -504,11 +516,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aww2/ViewController.swift"
-            timestampString = "448509048.307791"
+            timestampString = "451350500.12514"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "getSecondViewController(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -520,13 +532,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aww2/ViewController.swift"
-            timestampString = "448509048.307791"
+            timestampString = "451350500.12514"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
-            landmarkName = "ViewController"
-            landmarkType = "3">
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "pageViewController(_:viewControllerBeforeViewController:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -565,44 +577,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Aww2/ViewController.swift"
-            timestampString = "448344588.172852"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Aww2/ViewController.swift"
-            timestampString = "448344588.172852"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Aww2/FavoritesViewController.swift"
-            timestampString = "446617042.220285"
+            timestampString = "448936372.156512"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "didReceiveMemoryWarning()"
             landmarkType = "5">
          </BreakpointContent>
@@ -614,7 +594,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aww2/FavoritesViewController.swift"
-            timestampString = "446617042.220285"
+            timestampString = "451349583.003638"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
@@ -630,11 +610,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aww2/FavoritesViewController.swift"
-            timestampString = "446615143.287558"
+            timestampString = "448936372.156512"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -646,11 +626,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aww2/ViewController.swift"
-            timestampString = "448344588.172852"
+            timestampString = "450067475.980897"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "ViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -662,7 +642,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aww2/FavoritesViewController.swift"
-            timestampString = "446617042.220285"
+            timestampString = "451349583.003638"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
@@ -677,44 +657,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Aww2/PostCell.swift"
-            timestampString = "447138627.665099"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "retrieveAndSetImage()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Aww2/PostCell.swift"
-            timestampString = "447138627.665099"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "retrieveAndSetImage()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Aww2/ViewController.swift"
-            timestampString = "448417516.882587"
+            timestampString = "451350500.12514"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -726,11 +674,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aww2/ViewController.swift"
-            timestampString = "448508792.791128"
+            timestampString = "451350500.12514"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
             landmarkType = "5">
             <Locations>
@@ -740,6 +688,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "Aww2.ViewController.tableView (Aww2.ViewController)(ObjectiveC.UITableView, didSelectRowAtIndexPath : ObjectiveC.NSIndexPath) -&gt; ()"
                   moduleName = "Aww2"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/danielriaz/Desktop/Thinkful/Xcode/Aww2%20/Aww2/ViewController.swift"
                   timestampString = "448437160.417079"
                   startingColumnNumber = "9223372036854775807"
@@ -754,6 +703,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "reabstraction thunk helper from @callee_owned (@in Swift.Bool) -&gt; (@out ()) to @callee_owned (@unowned Swift.Bool) -&gt; (@unowned ())"
                   moduleName = "Aww2"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/danielriaz/Desktop/Thinkful/Xcode/Aww2%20/Aww2/ViewController.swift"
                   timestampString = "448437160.421271"
                   startingColumnNumber = "9223372036854775807"
@@ -768,6 +718,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "reabstraction thunk helper from @callee_owned (@unowned Swift.Bool) -&gt; (@unowned ()) to @callee_unowned @objc_block (@unowned ObjectiveC.ObjCBool) -&gt; (@unowned ())"
                   moduleName = "Aww2"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/danielriaz/Desktop/Thinkful/Xcode/Aww2%20/Aww2/ViewController.swift"
                   timestampString = "448437160.421571"
                   startingColumnNumber = "9223372036854775807"
@@ -777,6 +728,22 @@
                   offsetFromSymbolStart = "14">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Aww2/AppDelegate.swift"
+            timestampString = "450073206.965571"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "application(_:openURL:sourceApplication:annotation:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
