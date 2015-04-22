@@ -26,14 +26,13 @@
 		4263BCD91AE7174000F33FE0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4263BCD81AE7174000F33FE0 /* FacebookSDK.framework */; };
 		4263BCDB1AE7174C00F33FE0 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4263BCDA1AE7174C00F33FE0 /* ParseFacebookUtils.framework */; };
 		42762D211A8FE5D400E06345 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42762D201A8FE5D400E06345 /* FavoritesViewController.swift */; };
-		427C7DB81A3BA17E008DC95F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427C7DB61A3BA17E008DC95F /* SecondViewController.swift */; };
+		427C7DB81A3BA17E008DC95F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427C7DB61A3BA17E008DC95F /* DetailViewController.swift */; };
 		428DBCE01A312EBE0092FC15 /* RedditPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428DBCDF1A312EBE0092FC15 /* RedditPost.swift */; };
 		429321EB1A96C8DB0068621E /* Non_Retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 429321EA1A96C8DB0068621E /* Non_Retina.png */; };
-		429321EF1A96D3210068621E /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429321EE1A96D3210068621E /* PageViewController.swift */; };
 		429321F71A96F6240068621E /* ReferralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429321F61A96F6240068621E /* ReferralViewController.swift */; };
 		42964E201AB92AAA00CA033C /* keyartrnd5_3.06.2015.png in Resources */ = {isa = PBXBuildFile; fileRef = 42964E1F1AB92AAA00CA033C /* keyartrnd5_3.06.2015.png */; };
 		42A4F7F11A206F0100693ED2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A4F7F01A206F0100693ED2 /* AppDelegate.swift */; };
-		42A4F7F31A206F0100693ED2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A4F7F21A206F0100693ED2 /* ViewController.swift */; };
+		42A4F7F31A206F0100693ED2 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A4F7F21A206F0100693ED2 /* FeedViewController.swift */; };
 		42A4F7FB1A206F0100693ED2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42A4F7F91A206F0100693ED2 /* LaunchScreen.xib */; };
 		42A4F8071A206F0100693ED2 /* Aww2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A4F8061A206F0100693ED2 /* Aww2Tests.swift */; };
 		42B8E9BD1A9D8B5E005BD02C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42B8E9BC1A9D8B5E005BD02C /* Main.storyboard */; };
@@ -73,16 +72,15 @@
 		4263BCD81AE7174000F33FE0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		4263BCDA1AE7174C00F33FE0 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		42762D201A8FE5D400E06345 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		427C7DB61A3BA17E008DC95F /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecondViewController.swift; path = ../SecondViewController.swift; sourceTree = "<group>"; };
+		427C7DB61A3BA17E008DC95F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../DetailViewController.swift; sourceTree = "<group>"; };
 		428DBCDF1A312EBE0092FC15 /* RedditPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditPost.swift; sourceTree = "<group>"; };
 		429321EA1A96C8DB0068621E /* Non_Retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Non_Retina.png; sourceTree = "<group>"; };
-		429321EE1A96D3210068621E /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageViewController.swift; path = ../PageViewController.swift; sourceTree = "<group>"; };
 		429321F61A96F6240068621E /* ReferralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferralViewController.swift; sourceTree = "<group>"; };
 		42964E1F1AB92AAA00CA033C /* keyartrnd5_3.06.2015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keyartrnd5_3.06.2015.png; sourceTree = "<group>"; };
 		42A4F7EB1A206F0100693ED2 /* Cutie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cutie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42A4F7EF1A206F0100693ED2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42A4F7F01A206F0100693ED2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		42A4F7F21A206F0100693ED2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		42A4F7F21A206F0100693ED2 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		42A4F7FA1A206F0100693ED2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		42A4F8001A206F0100693ED2 /* CutieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CutieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		42A4F8051A206F0100693ED2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -166,13 +164,12 @@
 				42964E1F1AB92AAA00CA033C /* keyartrnd5_3.06.2015.png */,
 				42B8E9BC1A9D8B5E005BD02C /* Main.storyboard */,
 				429321F61A96F6240068621E /* ReferralViewController.swift */,
-				429321EE1A96D3210068621E /* PageViewController.swift */,
 				429321EA1A96C8DB0068621E /* Non_Retina.png */,
 				4233499A1A92A3AB00FD0258 /* secondNavController.swift */,
 				42E7B61F1A6B6FE200941E5D /* LoginViewController.swift */,
-				427C7DB61A3BA17E008DC95F /* SecondViewController.swift */,
+				427C7DB61A3BA17E008DC95F /* DetailViewController.swift */,
 				42A4F7F01A206F0100693ED2 /* AppDelegate.swift */,
-				42A4F7F21A206F0100693ED2 /* ViewController.swift */,
+				42A4F7F21A206F0100693ED2 /* FeedViewController.swift */,
 				423EEA0D1A369BFC0083A6D7 /* PostCell.swift */,
 				428DBCDF1A312EBE0092FC15 /* RedditPost.swift */,
 				42762D201A8FE5D400E06345 /* FavoritesViewController.swift */,
@@ -315,12 +312,11 @@
 			files = (
 				42E7B6201A6B6FE200941E5D /* LoginViewController.swift in Sources */,
 				4233499B1A92A3AB00FD0258 /* secondNavController.swift in Sources */,
-				427C7DB81A3BA17E008DC95F /* SecondViewController.swift in Sources */,
+				427C7DB81A3BA17E008DC95F /* DetailViewController.swift in Sources */,
 				42BFD6F91AE6F9B70061E807 /* SwiftyJSON.swift in Sources */,
 				4252F2441AAFC10C008B135F /* FavNavController.swift in Sources */,
-				429321EF1A96D3210068621E /* PageViewController.swift in Sources */,
 				428DBCE01A312EBE0092FC15 /* RedditPost.swift in Sources */,
-				42A4F7F31A206F0100693ED2 /* ViewController.swift in Sources */,
+				42A4F7F31A206F0100693ED2 /* FeedViewController.swift in Sources */,
 				429321F71A96F6240068621E /* ReferralViewController.swift in Sources */,
 				42A4F7F11A206F0100693ED2 /* AppDelegate.swift in Sources */,
 				42762D211A8FE5D400E06345 /* FavoritesViewController.swift in Sources */,

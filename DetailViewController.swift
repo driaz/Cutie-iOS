@@ -10,11 +10,11 @@ import UIKit
 import Foundation
 
 
-class SecondViewController: UIViewController, UITableViewDelegate {
+class DetailViewController: UIViewController, UITableViewDelegate {
 
     var detailPost: RedditPost?
     var detailPostIndexPosition = Int()
-    var svcIndexPath: NSIndexPath? = NSIndexPath()
+    //var svcIndexPath: NSIndexPath? = NSIndexPath()
 
     @IBOutlet weak var SVCActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var SVCImageView: UIImageView!

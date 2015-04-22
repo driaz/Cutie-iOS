@@ -205,7 +205,7 @@
         <!--Main Feed-->
         <scene sceneID="KBa-y5-TiB">
             <objects>
-                <viewController storyboardIdentifier="mainfeed" title="Main Feed" id="Ir8-nu-XTt" customClass="ViewController" customModule="Cutie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainfeed" title="Main Feed" id="Ir8-nu-XTt" customClass="FeedViewController" customModule="Cutie" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="320" sectionHeaderHeight="22" sectionFooterHeight="22" id="iog-4z-hO8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -238,13 +238,13 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CatCell" rowHeight="320" id="h1D-5C-Q9z" customClass="PostCell" customModule="Cutie" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="320" id="h1D-5C-Q9z" customClass="PostCell" customModule="Cutie" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="h1D-5C-Q9z" id="5NK-dl-NFh">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wr5-1x-vDl">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wr5-1x-vDl">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.64999999999999969" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wb-Sn-iN0">
@@ -273,8 +273,9 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="activityIndicator" destination="4UV-V6-CVL" id="qYK-FH-DzB"/>
-                                    <outlet property="listingImageView" destination="Wr5-1x-vDl" id="pxp-4L-6U8"/>
+                                    <outlet property="postImageView" destination="Wr5-1x-vDl" id="f9g-kM-dSS"/>
                                     <outlet property="titleLabel" destination="1wb-Sn-iN0" id="DMP-te-AD7"/>
+                                    <segue destination="b1H-hy-snI" kind="push" identifier="showPageViewController" id="kVk-Le-JCK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -299,12 +300,9 @@
         <!--Page View Controller-->
         <scene sceneID="Eo2-xz-CaR">
             <objects>
-                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="b1H-hy-snI" customClass="PageViewController" customModule="Cutie" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" hidesBottomBarWhenPushed="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="b1H-hy-snI" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="BKb-L8-EuP"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <outlet property="navItem" destination="vWy-YU-4f0" id="hUu-OQ-wRC"/>
-                        <segue destination="VLJ-hi-GXj" kind="show" id="kdH-gZ-PE1"/>
-                    </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVu-Dy-kmr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationItem title="Title" id="vWy-YU-4f0"/>
@@ -314,7 +312,7 @@
         <!--SecondViewController-->
         <scene sceneID="6TA-jl-QFl">
             <objects>
-                <viewController storyboardIdentifier="SecondViewController" id="VLJ-hi-GXj" userLabel="SecondViewController" customClass="SecondViewController" customModule="Cutie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="VLJ-hi-GXj" userLabel="SecondViewController" customClass="DetailViewController" customModule="Cutie" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GjB-4e-UZD"/>
                         <viewControllerLayoutGuide type="bottom" id="HCj-S8-gb2"/>
