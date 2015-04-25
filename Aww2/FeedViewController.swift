@@ -20,6 +20,8 @@ class FeedViewController: UIViewController, UIPageViewControllerDataSource, UIPa
     var afterValue: String = String()
 //    internal var currentIndexPath: NSIndexPath? = NSIndexPath()
     
+    var detailViewControllersToUpdate = [DetailViewController]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,10 +93,19 @@ class FeedViewController: UIViewController, UIPageViewControllerDataSource, UIPa
                 
                 
                 self.postView.reloadData()
-
+                
+                for detailVC in self.detailViewControllersToUpdate {
+                    
+                    let positionIndex = detailVC.detailPostIndexPosition
+                    let post = self.redditPostArray[positionIndex]
+                    self.configureDetailViewController(detailVC, withPost: post)
+                }
+                
+                if self.detailViewControllersToUpdate.count > 0 {
+                    self.detailViewControllersToUpdate.removeAll(keepCapacity: false)
+                }
             }
         }
-        
     }
     
     
@@ -158,12 +169,12 @@ class FeedViewController: UIViewController, UIPageViewControllerDataSource, UIPa
             return nil;
         }
         
-        let favoriteVC = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
-        favoriteVC.detailPostIndexPosition = positionIndex - 1
-        favoriteVC.detailPost = redditPostArray[positionIndex - 1]
+        let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+        detailVC.detailPostIndexPosition = positionIndex - 1
+        let post = redditPostArray[positionIndex - 1]
+        configureDetailViewController(detailVC, withPost: post)
         
-        
-        return favoriteVC
+        return detailVC
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
@@ -171,48 +182,71 @@ class FeedViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         let currentDetailVC = viewController as! DetailViewController
         let positionIndex = currentDetailVC.detailPostIndexPosition
         
-        let favoriteVC = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
-        favoriteVC.detailPostIndexPosition = positionIndex + 1
+        let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+        detailVC.detailPostIndexPosition = positionIndex + 1
         
         if positionIndex < redditPostArray.count - 1 {
-            favoriteVC.detailPost = redditPostArray[positionIndex + 1]
+            let post = redditPostArray[positionIndex + 1]
+            configureDetailViewController(detailVC, withPost: post)
+            
         } else {
-            connectReddit()
-            return nil
+            detailViewControllersToUpdate.append(detailVC)
+            
+            if !isLoadingData {
+                connectReddit()
+            }
         }
         
-        return favoriteVC
+        return detailVC
+    }
+    
+    func configureDetailViewController(detailVC: DetailViewController, withPost post: RedditPost) {
+        
+        detailVC.detailPost = post
+        if post.image == nil {
+            loadImageAtURL(post.url) { image in
+                post.image = image
+                detailVC.setRedditPost()
+            }
+        }
     }
     
     func configureRedditCell(cell: PostCell, atIndexPath indexPath: NSIndexPath) {
         
         //This function is called from the tableViewCellForRowAtIndexPath function in the ViewController class. Within the retrieveAndSetImage function we can determine if the post's image is missing data. If it is, we need to return something that tells the tableViewCellForRowAtIndexPath function not to create a cell.
         
-        
-        
         let post = redditPostArray[indexPath.row]
-        
-        
-        
-        
         cell.titleLabel.text = "  \(post.title)"
-        
-        
         
         
         //Setting loading image & activity indicator while image is still being set
         
-        //augmenting Imgur URL to request smaller image and increase load times
-        var str = post.url
-        
-        //        if (str.rangeOfString("photobucket", options: nil, range: nil, locale: nil) != nil) {
-        //            self.missingImage = true
-        //            println("tagged photobucket")
-        //            //tagging photobucket as these images do not load
-        //        }
+        if post.image == nil {
+            
+            cell.postImageView.image = UIImage(named: "loading")
+            
+            cell.activityIndicator.startAnimating()
+            
+            loadImageAtURL(post.url) { image in
+                
+                cell.activityIndicator.stopAnimating()
+                
+                post.image = image
+                
+                cell.postImageView?.image = post.image
+                
+                self.postView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            }
+            
+        } else {
+            cell.postImageView?.image = post.image
+        }
+    }
+    
+    func loadImageAtURL(url: String, success: (image: UIImage) -> ()) {
         
         //Lower loading times by adding "l" at the end of the image URL
-        var components = NSURLComponents(string: str)
+        var components = NSURLComponents(string: url)
         var filePath = components?.path
         let range = filePath?.rangeOfString(".", options: NSStringCompareOptions.BackwardsSearch)
         
@@ -222,34 +256,19 @@ class FeedViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         
         components?.path = filePath
         var URL = components?.URL
-        //        println("trying to bind \(URL)")
         
         var request = NSURLRequest(URL: URL!)
         
-        if post.image == nil {
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { response, data, error in
             
-            cell.postImageView.image = UIImage(named: "loading")
-            
-            cell.activityIndicator.startAnimating()
-            
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {[weak self] response, data, error in
-                
-                cell.activityIndicator.stopAnimating()
-                
-                if (error != nil) {
-                    println("Errored when attempting to fetch \(URL)")
-                    return
-                }
-                
-                post.image = UIImage(data: data)
-                
-                cell.postImageView?.image = post.image
-                
-                self?.postView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            if (error != nil) {
+                println("Errored when attempting to fetch \(URL)")
+                return
             }
             
-        } else {
-            cell.postImageView?.image = post.image
+            if let image = UIImage(data: data) {
+                success(image: image)
+            }
         }
     }
 }
