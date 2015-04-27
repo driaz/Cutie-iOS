@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h2Q-RZ-1sN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h2Q-RZ-1sN">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -20,20 +20,23 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LVC" translatesAutoresizingMaskIntoConstraints="NO" id="TdA-KY-eSe">
                                 <rect key="frame" x="0.0" y="-5" width="320" height="584"/>
                             </imageView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KdJ-7b-I36" customClass="FBLoginView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KdJ-7b-I36" customClass="FBLoginView">
                                 <rect key="frame" x="30" y="512" width="260" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="UGQ-II-z0Y"/>
+                                    <constraint firstAttribute="width" constant="260" id="cBR-qo-nDa"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KI1-gO-R2t" firstAttribute="top" secondItem="KdJ-7b-I36" secondAttribute="bottom" constant="22" id="7N2-Bd-meI"/>
+                            <constraint firstItem="KI1-gO-R2t" firstAttribute="top" secondItem="KdJ-7b-I36" secondAttribute="bottom" constant="16" id="4be-bt-B32"/>
                             <constraint firstAttribute="bottomMargin" secondItem="TdA-KY-eSe" secondAttribute="bottom" constant="-11" id="8tx-8Y-rXJ"/>
                             <constraint firstItem="TdA-KY-eSe" firstAttribute="leading" secondItem="6qO-qW-OgK" secondAttribute="leadingMargin" constant="-16" id="Qa1-5a-kv4"/>
                             <constraint firstItem="TdA-KY-eSe" firstAttribute="top" secondItem="6qO-qW-OgK" secondAttribute="topMargin" constant="-5" id="SEt-29-sur"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="KdJ-7b-I36" secondAttribute="trailing" constant="14" id="eEv-1u-jYy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TdA-KY-eSe" secondAttribute="trailing" constant="-16" id="rdN-jc-orl"/>
-                            <constraint firstItem="KdJ-7b-I36" firstAttribute="leading" secondItem="6qO-qW-OgK" secondAttribute="leadingMargin" constant="14" id="vAA-ph-jGF"/>
+                            <constraint firstAttribute="centerX" secondItem="KdJ-7b-I36" secondAttribute="centerX" id="tgO-My-QyM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ox7-Cg-bzs"/>
@@ -47,7 +50,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m4e-Cv-gbg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-278" y="190"/>
+            <point key="canvasLocation" x="-410" y="1227"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="y3r-Au-G1x">
@@ -141,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i8c-XM-Hur" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1660" y="1254"/>
+            <point key="canvasLocation" x="1660" y="1227"/>
         </scene>
         <!--Referral Feature-->
         <scene sceneID="sbF-0e-Lkf">
@@ -295,7 +298,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N0X-ze-xAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1650" y="187"/>
+            <point key="canvasLocation" x="1644" y="387"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="Eo2-xz-CaR">
@@ -307,7 +310,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVu-Dy-kmr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationItem id="vWy-YU-4f0"/>
             </objects>
-            <point key="canvasLocation" x="2163" y="187"/>
+            <point key="canvasLocation" x="2157" y="387"/>
         </scene>
         <!--DetailViewController-->
         <scene sceneID="6TA-jl-QFl">
@@ -322,9 +325,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="yy7-Wk-471">
-                                <rect key="frame" x="0.0" y="20" width="320" height="486"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="506"/>
                             </imageView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="tno-zr-aTg">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="tno-zr-aTg">
                                 <rect key="frame" x="150" y="274" width="20" height="20"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIH-bD-Axx">
@@ -370,10 +373,13 @@
                         <constraints>
                             <constraint firstItem="1IY-3X-1b7" firstAttribute="bottom" secondItem="yy7-Wk-471" secondAttribute="bottom" id="8Rf-o5-7IU"/>
                             <constraint firstItem="eya-pE-Rsk" firstAttribute="top" secondItem="yy7-Wk-471" secondAttribute="bottom" constant="8" id="Aho-si-VRG"/>
+                            <constraint firstAttribute="centerX" secondItem="tno-zr-aTg" secondAttribute="centerX" id="C0r-Dq-17R"/>
                             <constraint firstAttribute="trailing" secondItem="yy7-Wk-471" secondAttribute="trailing" id="DPh-dA-cnx"/>
                             <constraint firstItem="eya-pE-Rsk" firstAttribute="leading" secondItem="KgM-da-s8j" secondAttribute="leading" constant="70" id="TaF-8V-Clq"/>
                             <constraint firstAttribute="centerX" secondItem="1IY-3X-1b7" secondAttribute="centerX" id="V8W-5J-h3U"/>
+                            <constraint firstItem="yy7-Wk-471" firstAttribute="top" secondItem="KgM-da-s8j" secondAttribute="top" id="WOv-H9-xIN"/>
                             <constraint firstItem="yy7-Wk-471" firstAttribute="leading" secondItem="KgM-da-s8j" secondAttribute="leading" id="aYn-zX-le9"/>
+                            <constraint firstAttribute="centerY" secondItem="tno-zr-aTg" secondAttribute="centerY" id="aaJ-O2-vyX"/>
                             <constraint firstItem="yy7-Wk-471" firstAttribute="top" secondItem="KgM-da-s8j" secondAttribute="top" constant="64" id="dGO-0o-71H"/>
                             <constraint firstItem="HCj-S8-gb2" firstAttribute="top" secondItem="eya-pE-Rsk" secondAttribute="bottom" constant="20" id="qjk-jW-S96"/>
                             <constraint firstItem="1IY-3X-1b7" firstAttribute="bottom" secondItem="yy7-Wk-471" secondAttribute="bottom" id="uYr-Xs-fPr"/>
@@ -384,11 +390,13 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="dGO-0o-71H"/>
+                                <exclude reference="ux8-Pp-xzq"/>
                                 <exclude reference="uYr-Xs-fPr"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="L56-7u-UP1"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="activityIndicator" destination="tno-zr-aTg" id="SDQ-Mm-Srw"/>
@@ -398,7 +406,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5j-GK-uey" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2648" y="187"/>
+            <point key="canvasLocation" x="2671" y="387"/>
         </scene>
         <!--Home-->
         <scene sceneID="yYy-Jr-vEn">
@@ -419,7 +427,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JLj-BF-06z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationItem title="Title" id="jtc-jw-bMd"/>
             </objects>
-            <point key="canvasLocation" x="1118" y="187"/>
+            <point key="canvasLocation" x="1112" y="387"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="kmU-dP-b9o">
@@ -438,7 +446,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X9R-6d-nq1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1128" y="1254"/>
+            <point key="canvasLocation" x="1112" y="1227"/>
         </scene>
     </scenes>
     <resources>

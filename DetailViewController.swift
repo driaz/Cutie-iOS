@@ -35,16 +35,17 @@ class DetailViewController: UIViewController, UITableViewDelegate {
 
     func setRedditPost() {
         
-        if let post = detailPost {
-            postTextLabel.text = post.title
-            postImageView.image = post.image
-            
-            if activityIndicator.isAnimating() {
-                activityIndicator.stopAnimating()
-            }
-            
+        // set post image
+        if let title = detailPost?.title {
+            postTextLabel.text = title
         } else {
             postTextLabel.text = nil
+        }
+        
+        // set post title
+        if let image = detailPost?.image {
+            postImageView.image = image
+        } else {
             activityIndicator.startAnimating()
         }
     }
