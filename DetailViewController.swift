@@ -19,6 +19,8 @@ class DetailViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var postTextLabel: UILabel!
     
+    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
+    
     
     override func viewDidLoad() {
         
@@ -44,8 +46,12 @@ class DetailViewController: UIViewController, UITableViewDelegate {
         
         // set post title
         if let image = detailPost?.image {
+        
+            let minWidth = min(self.view.bounds.size.width, image.size.width)
+            imageViewHeightConstraint.constant = minWidth * image.size.height / image.size.width
             postImageView.image = image
         } else {
+            postImageView.image = UIImage(named: "loading")
             activityIndicator.startAnimating()
         }
     }

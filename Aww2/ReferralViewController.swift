@@ -29,12 +29,7 @@ class ReferralViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        shareButton.layer.borderColor = UIColor.whiteColor().CGColor
         tabBarItem.selectedImage = UIImage(named: "users_two_filled")
-        shareButton.layer.shadowColor = UIColor.blackColor().CGColor
-        shareButton.layer.shadowOpacity = 0.8
-        shareButton.layer.shadowRadius = 1
-        shareButton.layer.shadowOffset = CGSizeMake(2.0, 2.0)
 
         // Do any additional setup after loading the view.
     }

@@ -38,6 +38,7 @@
 		42B8E9BD1A9D8B5E005BD02C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42B8E9BC1A9D8B5E005BD02C /* Main.storyboard */; };
 		42BFD6F91AE6F9B70061E807 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BFD6F81AE6F9B70061E807 /* SwiftyJSON.swift */; };
 		42C9AE3F1A685C55008F59BA /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C9AE3E1A685C55008F59BA /* libsqlite3.0.dylib */; };
+		42D670E41AEF04CF00628939 /* CutieButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D670E31AEF04CF00628939 /* CutieButton.swift */; };
 		42E7B6201A6B6FE200941E5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E7B61F1A6B6FE200941E5D /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		42B8E9BC1A9D8B5E005BD02C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		42BFD6F81AE6F9B70061E807 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		42C9AE3E1A685C55008F59BA /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		42D670E31AEF04CF00628939 /* CutieButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CutieButton.swift; sourceTree = "<group>"; };
 		42E7B61F1A6B6FE200941E5D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,6 +180,7 @@
 				42A4F7F91A206F0100693ED2 /* LaunchScreen.xib */,
 				4252F2451AAFC4A5008B135F /* Images.xcassets */,
 				42A4F7EE1A206F0100693ED2 /* Supporting Files */,
+				42D670E31AEF04CF00628939 /* CutieButton.swift */,
 			);
 			path = Aww2;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 			files = (
 				42E7B6201A6B6FE200941E5D /* LoginViewController.swift in Sources */,
 				4233499B1A92A3AB00FD0258 /* secondNavController.swift in Sources */,
+				42D670E41AEF04CF00628939 /* CutieButton.swift in Sources */,
 				427C7DB81A3BA17E008DC95F /* DetailViewController.swift in Sources */,
 				42BFD6F91AE6F9B70061E807 /* SwiftyJSON.swift in Sources */,
 				4252F2441AAFC10C008B135F /* FavNavController.swift in Sources */,
