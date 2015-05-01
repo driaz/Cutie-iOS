@@ -19,28 +19,6 @@
       "idiom" : "iphone",
       "scale" : "3x",
       "filename" : "SharingImage1242 x 2208.png"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "watch",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "watch",
-      "screenWidth" : "{130,145}",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "watch",
-      "screenWidth" : "{146,165}",
-      "scale" : "2x"
     }
   ],
   "info" : {

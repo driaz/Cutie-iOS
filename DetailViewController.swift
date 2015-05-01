@@ -21,11 +21,14 @@ class DetailViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var shareButtonBottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        //shareButtonBottomConstraint.constant = -24
         
         setRedditPost()
     }
@@ -34,6 +37,7 @@ class DetailViewController: UIViewController, UITableViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
     func setRedditPost() {
         

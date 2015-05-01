@@ -141,9 +141,15 @@ class FeedViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         }
     }
     
-     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return postView.frame.width
-                
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 320.0
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        let post = redditPostArray[indexPath.row]
+        
+        return post.fittingHeight ?? 320.0
     }
     
     
@@ -198,6 +204,9 @@ class FeedViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         return detailVC;
     }
     
+    
+    // MARK: -
+    
     func configureDetailViewController(detailVC: DetailViewController, withPost post: RedditPost) {
         
         detailVC.detailPost = post
@@ -205,6 +214,8 @@ class FeedViewController: UIViewController, UIPageViewControllerDataSource, UIPa
         if post.image == nil {
             loadImageAtURL(post.url) { image in
                 post.image = image
+                let minWidth = min(self.view.bounds.size.width, image.size.width)
+                post.fittingHeight = minWidth * image.size.height / image.size.width
                 if detailVC.isViewLoaded() {
                     detailVC.setRedditPost()
                     detailVC.activityIndicator.stopAnimating()
@@ -234,6 +245,9 @@ class FeedViewController: UIViewController, UIPageViewControllerDataSource, UIPa
                 cell.activityIndicator.stopAnimating()
                 
                 post.image = image
+                
+                let minWidth = min(self.view.bounds.size.width, image.size.width)
+                post.fittingHeight = minWidth * image.size.height / image.size.width
                 
                 cell.postImageView?.image = post.image
                 
@@ -269,8 +283,46 @@ class FeedViewController: UIViewController, UIPageViewControllerDataSource, UIPa
             }
             
             if let image = UIImage(data: data) {
-                success(image: image)
+                
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.value), 0)) {
+                    let image = self.scaleImage(image, constrainedToWidth: self.view.bounds.size.width)
+                    dispatch_async(dispatch_get_main_queue()) {
+                        success(image: image)
+                    }
+                }
             }
+        }
+    }
+    
+    func scaleImage(image: UIImage, constrainedToWidth width: CGFloat) -> UIImage {
+        
+        let originalImageWidth = image.size.width
+        let originalImageHeight = image.size.height
+        
+        var newImageWidth: CGFloat = 0.0
+        var newImageHeight: CGFloat = 0.0
+        
+        if originalImageWidth > width {
+            
+            newImageWidth = width
+            newImageHeight = width * originalImageHeight / originalImageWidth
+            
+            let size = CGSize(width: newImageWidth, height: newImageHeight)
+            
+            UIGraphicsBeginImageContextWithOptions(size, true, UIScreen.mainScreen().scale)
+            
+            let x = (width - newImageWidth ) / 2
+            
+            image.drawInRect(CGRect(x: x, y: 0.0, width: newImageWidth, height: newImageHeight))
+            
+            let newImage = UIGraphicsGetImageFromCurrentImageContext()
+
+            UIGraphicsEndImageContext()
+            
+            return newImage
+            
+        } else {
+            return image
         }
     }
 }

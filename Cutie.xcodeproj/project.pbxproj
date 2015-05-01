@@ -28,12 +28,9 @@
 		42762D211A8FE5D400E06345 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42762D201A8FE5D400E06345 /* FavoritesViewController.swift */; };
 		427C7DB81A3BA17E008DC95F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427C7DB61A3BA17E008DC95F /* DetailViewController.swift */; };
 		428DBCE01A312EBE0092FC15 /* RedditPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428DBCDF1A312EBE0092FC15 /* RedditPost.swift */; };
-		429321EB1A96C8DB0068621E /* Non_Retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 429321EA1A96C8DB0068621E /* Non_Retina.png */; };
 		429321F71A96F6240068621E /* ReferralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429321F61A96F6240068621E /* ReferralViewController.swift */; };
-		42964E201AB92AAA00CA033C /* keyartrnd5_3.06.2015.png in Resources */ = {isa = PBXBuildFile; fileRef = 42964E1F1AB92AAA00CA033C /* keyartrnd5_3.06.2015.png */; };
 		42A4F7F11A206F0100693ED2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A4F7F01A206F0100693ED2 /* AppDelegate.swift */; };
 		42A4F7F31A206F0100693ED2 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A4F7F21A206F0100693ED2 /* FeedViewController.swift */; };
-		42A4F7FB1A206F0100693ED2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42A4F7F91A206F0100693ED2 /* LaunchScreen.xib */; };
 		42A4F8071A206F0100693ED2 /* Aww2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A4F8061A206F0100693ED2 /* Aww2Tests.swift */; };
 		42B8E9BD1A9D8B5E005BD02C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42B8E9BC1A9D8B5E005BD02C /* Main.storyboard */; };
 		42BFD6F91AE6F9B70061E807 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BFD6F81AE6F9B70061E807 /* SwiftyJSON.swift */; };
@@ -75,14 +72,11 @@
 		42762D201A8FE5D400E06345 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		427C7DB61A3BA17E008DC95F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../DetailViewController.swift; sourceTree = "<group>"; };
 		428DBCDF1A312EBE0092FC15 /* RedditPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditPost.swift; sourceTree = "<group>"; };
-		429321EA1A96C8DB0068621E /* Non_Retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Non_Retina.png; sourceTree = "<group>"; };
 		429321F61A96F6240068621E /* ReferralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferralViewController.swift; sourceTree = "<group>"; };
-		42964E1F1AB92AAA00CA033C /* keyartrnd5_3.06.2015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keyartrnd5_3.06.2015.png; sourceTree = "<group>"; };
 		42A4F7EB1A206F0100693ED2 /* Cutie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cutie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42A4F7EF1A206F0100693ED2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42A4F7F01A206F0100693ED2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42A4F7F21A206F0100693ED2 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		42A4F7FA1A206F0100693ED2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		42A4F8001A206F0100693ED2 /* CutieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CutieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		42A4F8051A206F0100693ED2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42A4F8061A206F0100693ED2 /* Aww2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aww2Tests.swift; sourceTree = "<group>"; };
@@ -163,10 +157,8 @@
 		42A4F7ED1A206F0100693ED2 /* Aww2 */ = {
 			isa = PBXGroup;
 			children = (
-				42964E1F1AB92AAA00CA033C /* keyartrnd5_3.06.2015.png */,
 				42B8E9BC1A9D8B5E005BD02C /* Main.storyboard */,
 				429321F61A96F6240068621E /* ReferralViewController.swift */,
-				429321EA1A96C8DB0068621E /* Non_Retina.png */,
 				4233499A1A92A3AB00FD0258 /* secondNavController.swift */,
 				42E7B61F1A6B6FE200941E5D /* LoginViewController.swift */,
 				42A4F7F21A206F0100693ED2 /* FeedViewController.swift */,
@@ -177,7 +169,6 @@
 				42762D201A8FE5D400E06345 /* FavoritesViewController.swift */,
 				4252F2431AAFC10C008B135F /* FavNavController.swift */,
 				42BFD6F81AE6F9B70061E807 /* SwiftyJSON.swift */,
-				42A4F7F91A206F0100693ED2 /* LaunchScreen.xib */,
 				4252F2451AAFC4A5008B135F /* Images.xcassets */,
 				42A4F7EE1A206F0100693ED2 /* Supporting Files */,
 				42D670E31AEF04CF00628939 /* CutieButton.swift */,
@@ -291,11 +282,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42964E201AB92AAA00CA033C /* keyartrnd5_3.06.2015.png in Resources */,
 				42B8E9BD1A9D8B5E005BD02C /* Main.storyboard in Resources */,
 				4252F2461AAFC4A5008B135F /* Images.xcassets in Resources */,
-				42A4F7FB1A206F0100693ED2 /* LaunchScreen.xib in Resources */,
-				429321EB1A96C8DB0068621E /* Non_Retina.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,17 +333,6 @@
 			targetProxy = 42A4F8011A206F0100693ED2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		42A4F7F91A206F0100693ED2 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				42A4F7FA1A206F0100693ED2 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		42A4F8081A206F0100693ED2 /* Debug */ = {

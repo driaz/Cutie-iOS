@@ -16,6 +16,7 @@ class RedditPost: Equatable {
     var pointScore: Int
     var url: String
     var image: UIImage?
+    var fittingHeight: CGFloat?
 
     init(author: String, title: String, numComments: Int, pointScore: Int, url: String) {
         self.author = author
