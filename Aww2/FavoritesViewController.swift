@@ -15,28 +15,31 @@
 import UIKit
 import Foundation
 
-class FavoritesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    @IBOutlet var favoritesView: UITableView!
-    @IBOutlet weak var navItem: UINavigationItem!
+class FavoritesViewController: UITableViewController, UIPageViewControllerDataSource {
     
-    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-
+    var posts = [RedditPost]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let logo = UIImage(named: "BlackLogo")
-        let imageView = UIImageView(image:logo)
-        self.navItem.titleView = imageView
-        self.favoritesView.backgroundColor = UIColor.blackColor()
-
-        // Do any additional setup after loading the view.
-        
+        self.navigationItem.titleView = UIImageView(image:logo)
+        self.tableView.backgroundColor = UIColor.blackColor()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        println("view does appear upon click")
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // init saved favorite posts
+        if let postsData = NSUserDefaults.standardUserDefaults().dataForKey("RedditPosts") {
+            posts = NSKeyedUnarchiver.unarchiveObjectWithData(postsData) as! [RedditPost]
+        }
+        
+        for post in posts {
+            post.image = imageWithFilename(post.filename!)
+        }
+        
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,40 +47,120 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Navigation
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.favoritesView.dequeueReusableCellWithIdentifier("FavoritesCell") as! PostCell
-        let post = appDelegate.appDelegateFavorites[indexPath.row]
-        cell.selectionStyle = .None
-        //cell.configureWithRedditPost(post)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "showPageViewController" {
+            if let indexPath = self.tableView.indexPathForSelectedRow() {
+                let post = posts[indexPath.row]
+                
+                let pageVC = segue.destinationViewController as! UIPageViewController
+                pageVC.dataSource = self
+                
+                let logo = UIImage(named: "BlackLogo")
+                pageVC.navigationItem.titleView = UIImageView(image:logo)
+                
+                let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+                detailVC.index = indexPath.row
+                detailVC.detailPost = posts[indexPath.row]
+                
+                pageVC.setViewControllers([detailVC], direction: .Reverse, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    // MARK: - UITableView data source
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("FavoriteCell") as! PostCell
+        
+        configureRedditCell(cell, atIndexPath: indexPath)
         
         return cell
-
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = appDelegate.appDelegateFavorites.count
-        return count
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 320.0
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return favoritesView.frame.width * 1.0
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        let post = posts[indexPath.row]
+        
+        return post.fittingHeight ?? 320.0
     }
     
-     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+    // MARK: - UIPageViewController data source
+    
+    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+        
+        let currentDetailVC = viewController as! DetailViewController
+        let positionIndex = currentDetailVC.index - 1
+        
+        if positionIndex < 0 {
+            return nil;
+        }
+        
+        let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+        detailVC.index = positionIndex
+        if positionIndex < posts.count {
+            let post = posts[positionIndex]
+            configureDetailViewController(detailVC, withPost:post)
+        }
+        
+        return detailVC
     }
-
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+        
+        let currentDetailVC = viewController as! DetailViewController
+        let positionIndex = currentDetailVC.index + 1
+        
+        if positionIndex > posts.count - 1 {
+            return nil
+        }
+        
+        let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+        detailVC.index = positionIndex
+        let post = posts[positionIndex]
+        configureDetailViewController(detailVC, withPost:post)
+        
+        return detailVC
     }
-    */
-
+    
+    // MARK: - Helpers
+    
+    func configureRedditCell(cell: PostCell, atIndexPath indexPath: NSIndexPath) {
+        
+        // This function is called from the tableView(_:cellForRowAtIndexPath:) function in the ViewController class.
+        // Within the retrieveAndSetImage function we can determine if the post's image is missing data. If it is,
+        // we need to return something that tells the tableViewCellForRowAtIndexPath function not to create a cell.
+        
+        let post = posts[indexPath.row]
+        cell.titleLabel.text = "  \(post.title)"
+        cell.postImageView.image = post.image
+    }
+    
+    func configureDetailViewController(detailVC: DetailViewController, withPost post: RedditPost) {
+        
+        detailVC.detailPost = post
+        if detailVC.isViewLoaded() {
+            detailVC.setRedditPost()
+            detailVC.activityIndicator.stopAnimating()
+        }
+    }
+    
+    func imageWithFilename(filename: String) -> UIImage {
+        
+        var url = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as! NSURL
+        url = url.URLByAppendingPathComponent(filename)
+        let data = NSData(contentsOfURL: url)
+        return UIImage(data: data!, scale: UIScreen.mainScreen().scale)!
+    }
 }

@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Parse
+
 class LoginViewController: UIViewController, FBLoginViewDelegate{
 
     @IBOutlet weak var BackgroundImage: UIImageView!

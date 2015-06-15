@@ -8,27 +8,30 @@
 
 import UIKit
 
-class FeedViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, UITraitEnvironment {
+class FeedViewController: UITableViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
-    @IBOutlet var postView: UITableView!
-    @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var footerActivityIndictor: UIActivityIndicatorView!
-    @IBOutlet weak var footerLabel: UILabel!
     
     var isLoadingData = false
     var redditPostArray = [RedditPost]()
     var afterValue: String = String()
+    var detailViewControllers = [DetailViewController]()
+    var progress = NSProgress(totalUnitCount: 1)
+    
+    @IBOutlet weak var progressView: UIProgressView!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.connectReddit()
         
         let logo = UIImage(named: "BlackLogo")
         self.navigationItem.titleView = UIImageView(image:logo)
         
-        self.postView.backgroundColor = UIColor.blackColor()
+        self.tableView.backgroundColor = UIColor.blackColor()
         self.footerActivityIndictor.startAnimating()
+        
+        loadRedditPostsWithImages()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -38,7 +41,7 @@ class FeedViewController: UIViewController, UIPageViewControllerDataSource, UIPa
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "showPageViewController" {
-            if let indexPath = self.postView.indexPathForSelectedRow() {
+            if let indexPath = self.tableView.indexPathForSelectedRow() {
                 let post = redditPostArray[indexPath.row]
                 
                 let pageVC = segue.destinationViewController as! UIPageViewController
@@ -48,44 +51,62 @@ class FeedViewController: UIViewController, UIPageViewControllerDataSource, UIPa
                 let logo = UIImage(named: "BlackLogo")
                 pageVC.navigationItem.titleView = UIImageView(image:logo)
                 
-                let favoriteVC = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
-                favoriteVC.detailPostIndexPosition = indexPath.row
-                favoriteVC.detailPost = redditPostArray[indexPath.row]
+                let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+                detailVC.index = indexPath.row
+                detailVC.detailPost = redditPostArray[indexPath.row]
                 
-                pageVC.setViewControllers([favoriteVC], direction: .Reverse, animated: true, completion: nil)
+                pageVC.setViewControllers([detailVC], direction: .Reverse, animated: true, completion: nil)
+                
+                detailViewControllers.append(detailVC)
             }
         }
     }
     
-    func connectReddit() {
+    // MARK: - Load posts
+    
+    func loadRedditPostsWithImages() {
         
         self.isLoadingData = true
-        loadRedditPosts { (posts, afterValue) -> Void in
-            self.isLoadingData = false
-            self.afterValue = afterValue
-            self.redditPostArray += posts
-            self.postView.reloadData()
+        
+        loadRedditPosts().continueWithSuccessBlock { (task) -> AnyObject! in
+            
+            let posts = task.result as! [RedditPost]
+            
+            var task = BFTask(result: nil)
+            
+            for post in posts {
+                task = task.continueWithBlock { (task) -> AnyObject! in
+                    return self.loadImageOfPost(post)
+                }
+            }
+            
+            task.continueWithBlock { (task) -> AnyObject! in
+                self.isLoadingData = false
+                return nil
+            }
+            
+            return task
         }
     }
     
     
-    func loadRedditPosts(success: ([RedditPost], String) -> Void) {
+    func loadRedditPosts() -> BFTask! {
         
-        let urlPath: String = "http://www.reddit.com/r/aww/hot.json?after=\(afterValue)"
-        var url = NSURL(string: urlPath)!
-        var request = NSURLRequest(URL: url)
+        let taskCompletionSource = BFTaskCompletionSource()
         
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse!
-            , data: NSData!, error: NSError!) -> Void in
+        let urlPath: String = "http://www.reddit.com/r/aww/hot.json?after=\(self.afterValue)"
+        var url = NSURL(string: urlPath)
+        var request = NSURLRequest(URL: url!)
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { response, data, error in
             
             if error != nil {
-                println(error.localizedDescription)
+                taskCompletionSource.setError(error)
                 return;
             }
             
             let json = JSON(data: data)
-            let afterValue = json["data"]["after"].stringValue ?? ""
-            
+            self.afterValue = json["data"]["after"].stringValue ?? ""
             let jsonPosts =  json["data"]["children"].arrayValue
             var redditPosts = [RedditPost]()
             
@@ -107,68 +128,120 @@ class FeedViewController: UIViewController, UIPageViewControllerDataSource, UIPa
                     redditPosts.append(post)
                 }
             }
-            
-            success(redditPosts, afterValue)
+            taskCompletionSource.setResult(redditPosts)
         }
+        
+        return taskCompletionSource.task
+    }
+    
+    func loadImageOfPost(post: RedditPost) -> BFTask! {
+        
+        let taskCompletionSource = BFTaskCompletionSource()
+        
+        //Lower loading times by adding "l" at the end of the image URL
+        var components = NSURLComponents(string: post.url)
+        var filePath = components?.path
+        let range = filePath?.rangeOfString(".", options: .BackwardsSearch)
+        
+        if let range = range {
+            filePath = filePath!.substringToIndex(range.startIndex) + "l" + filePath!.substringFromIndex(range.startIndex)
+        }
+        
+        components?.path = filePath
+        var URL = components?.URL
+        var request = NSURLRequest(URL: URL!)
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { response, data, error in
+            
+            if (error != nil) {
+                taskCompletionSource.setError(error)
+                return
+            }
+            
+            if let image = UIImage(data: data) {
+                post.image = image
+                let minWidth = min(self.view.bounds.size.width, image.size.width)
+                let minHeight = self.view.bounds.size.height - 20.0 - 44.0 - 49.0
+                post.fittingHeight = min(minHeight, minWidth * image.size.height / image.size.width)
+                self.redditPostArray.append(post)
+                self.tableView.reloadData()
+                if let pageVC = self.navigationController!.topViewController as? UIPageViewController {
+                    // set post for current detail view controller on the page view controller
+                    for detailVC in self.detailViewControllers {
+                        if detailVC.index == self.redditPostArray.count - 1 {
+                            self.configureDetailViewController(detailVC, withPost: post)
+                        }
+                    }
+                }
+            }
+            
+            taskCompletionSource.setResult(nil)
+        }
+        
+        return taskCompletionSource.task
     }
     
     // MARK: - UITableView data source
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return redditPostArray.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = self.postView.dequeueReusableCellWithIdentifier("PostCell") as! PostCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! PostCell
         
         configureRedditCell(cell, atIndexPath: indexPath)
         
         return cell
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return redditPostArray.count
-    }
-    
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        if self.isLoadingData {
-            return
-        }
-        
-        let contentSize = postView.contentSize
-        let contentOffset = postView.contentOffset
-        
-        if (contentOffset.y > contentSize.height - scrollView.bounds.size.height) {
-            connectReddit()
-          self.footerActivityIndictor.startAnimating()
-        }
-    }
-    
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 320.0
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         let post = redditPostArray[indexPath.row]
         
         return post.fittingHeight ?? 320.0
     }
     
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        if self.isLoadingData {
+            return
+        }
+        
+        let contentSize = self.tableView.contentSize
+        let contentOffset = self.tableView.contentOffset
+        
+        if (contentOffset.y > contentSize.height - scrollView.bounds.size.height) {
+            loadRedditPostsWithImages()
+            self.footerActivityIndictor.startAnimating()
+        }
+    }
     
     // MARK: - UIPageViewController data source
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         
         let currentDetailVC = viewController as! DetailViewController
-        let positionIndex = currentDetailVC.detailPostIndexPosition - 1
+        let positionIndex = currentDetailVC.index - 1
         
         if positionIndex < 0 {
             return nil;
         }
         
         let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
-        detailVC.detailPostIndexPosition = positionIndex
+        detailVC.index = positionIndex
         if positionIndex < redditPostArray.count {
-            let post = self.redditPostArray[positionIndex]
+            let post = redditPostArray[positionIndex]
             configureDetailViewController(detailVC, withPost:post)
+        }
+        
+        detailViewControllers.insert(detailVC, atIndex: 0)
+        if detailViewControllers.count > 3 {
+            detailViewControllers.removeLast()
         }
         
         return detailVC
@@ -177,31 +250,24 @@ class FeedViewController: UIViewController, UIPageViewControllerDataSource, UIPa
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
                 
         let currentDetailVC = viewController as! DetailViewController
-        let positionIndex = currentDetailVC.detailPostIndexPosition + 1
+        let positionIndex = currentDetailVC.index + 1
         let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
-        detailVC.detailPostIndexPosition = positionIndex
+        detailVC.index = positionIndex
         
         if positionIndex < redditPostArray.count {
-            let post = self.redditPostArray[positionIndex]
+            let post = redditPostArray[positionIndex]
             configureDetailViewController(detailVC, withPost:post)
             
-            if positionIndex == redditPostArray.count - 1 {
-                self.isLoadingData = true
-                loadRedditPosts { (posts, afterValue) -> Void in
-                    self.isLoadingData = false
-                    self.afterValue = afterValue
-                    self.redditPostArray += posts
-                    self.postView.reloadData()
-                    
-                    for detailVC in pageViewController.viewControllers as! [DetailViewController] {
-                        let post = self.redditPostArray[detailVC.detailPostIndexPosition]
-                        self.configureDetailViewController(detailVC, withPost: post)
-                    }
-                }
-            }
+        } else if !isLoadingData {
+            loadRedditPostsWithImages()
         }
         
-        return detailVC;
+        detailViewControllers.append(detailVC)
+        if detailViewControllers.count > 3 {
+            detailViewControllers.removeAtIndex(0)
+        }
+        
+        return detailVC
     }
     
     
@@ -210,119 +276,20 @@ class FeedViewController: UIViewController, UIPageViewControllerDataSource, UIPa
     func configureDetailViewController(detailVC: DetailViewController, withPost post: RedditPost) {
         
         detailVC.detailPost = post
-        
-        if post.image == nil {
-            loadImageAtURL(post.url) { image in
-                post.image = image
-                let minWidth = min(self.view.bounds.size.width, image.size.width)
-                post.fittingHeight = minWidth * image.size.height / image.size.width
-                if detailVC.isViewLoaded() {
-                    detailVC.setRedditPost()
-                    detailVC.activityIndicator.stopAnimating()
-                }
-            }
+        if detailVC.isViewLoaded() {
+            detailVC.setRedditPost()
+            detailVC.activityIndicator.stopAnimating()
         }
     }
     
     func configureRedditCell(cell: PostCell, atIndexPath indexPath: NSIndexPath) {
         
-        //This function is called from the tableViewCellForRowAtIndexPath function in the ViewController class. Within the retrieveAndSetImage function we can determine if the post's image is missing data. If it is, we need to return something that tells the tableViewCellForRowAtIndexPath function not to create a cell.
+        // This function is called from the tableView(_:cellForRowAtIndexPath:) function in the ViewController class.
+        // Within the retrieveAndSetImage function we can determine if the post's image is missing data. If it is,
+        // we need to return something that tells the tableViewCellForRowAtIndexPath function not to create a cell.
         
         let post = redditPostArray[indexPath.row]
         cell.titleLabel.text = "  \(post.title)"
-        
-        
-        //Setting loading image & activity indicator while image is still being set
-        
-        if post.image == nil {
-            
-            cell.postImageView.image = UIImage(named: "loading")
-            
-            cell.activityIndicator.startAnimating()
-            
-            loadImageAtURL(post.url) { image in
-                
-                cell.activityIndicator.stopAnimating()
-                
-                post.image = image
-                
-                let minWidth = min(self.view.bounds.size.width, image.size.width)
-                post.fittingHeight = minWidth * image.size.height / image.size.width
-                
-                cell.postImageView?.image = post.image
-                
-                self.postView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-            }
-            
-        } else {
-            cell.postImageView?.image = post.image
-        }
-    }
-    
-    func loadImageAtURL(url: String, success: (image: UIImage) -> ()) {
-        
-        //Lower loading times by adding "l" at the end of the image URL
-        var components = NSURLComponents(string: url)
-        var filePath = components?.path
-        let range = filePath?.rangeOfString(".", options: NSStringCompareOptions.BackwardsSearch)
-        
-        if let range = range {
-            filePath = filePath!.substringToIndex(range.startIndex) + "l" + filePath!.substringFromIndex(range.startIndex)
-        }
-        
-        components?.path = filePath
-        var URL = components?.URL
-        
-        var request = NSURLRequest(URL: URL!)
-        
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { response, data, error in
-            
-            if (error != nil) {
-                println("Errored when attempting to fetch \(URL)")
-                return
-            }
-            
-            if let image = UIImage(data: data) {
-                
-                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.value), 0)) {
-                    let image = self.scaleImage(image, constrainedToWidth: self.view.bounds.size.width)
-                    dispatch_async(dispatch_get_main_queue()) {
-                        success(image: image)
-                    }
-                }
-            }
-        }
-    }
-    
-    func scaleImage(image: UIImage, constrainedToWidth width: CGFloat) -> UIImage {
-        
-        let originalImageWidth = image.size.width
-        let originalImageHeight = image.size.height
-        
-        var newImageWidth: CGFloat = 0.0
-        var newImageHeight: CGFloat = 0.0
-        
-        if originalImageWidth > width {
-            
-            newImageWidth = width
-            newImageHeight = width * originalImageHeight / originalImageWidth
-            
-            let size = CGSize(width: newImageWidth, height: newImageHeight)
-            
-            UIGraphicsBeginImageContextWithOptions(size, true, UIScreen.mainScreen().scale)
-            
-            let x = (width - newImageWidth ) / 2
-            
-            image.drawInRect(CGRect(x: x, y: 0.0, width: newImageWidth, height: newImageHeight))
-            
-            let newImage = UIGraphicsGetImageFromCurrentImageContext()
-
-            UIGraphicsEndImageContext()
-            
-            return newImage
-            
-        } else {
-            return image
-        }
+        cell.postImageView.image = post.image
     }
 }

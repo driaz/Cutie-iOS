@@ -13,22 +13,19 @@ import Foundation
 class DetailViewController: UIViewController, UITableViewDelegate {
 
     var detailPost: RedditPost?
-    var detailPostIndexPosition = Int()
+    var index = 0
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var postTextLabel: UILabel!
     
     @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var shareButtonBottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        //shareButtonBottomConstraint.constant = -24
         
         setRedditPost()
     }
@@ -59,43 +56,56 @@ class DetailViewController: UIViewController, UITableViewDelegate {
             activityIndicator.startAnimating()
         }
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     
     // MARK: - IB Actions
     
     @IBAction func saveToFavorites(sender: AnyObject) {
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.appDelegateFavorites.append(detailPost!)
+        // append post to other favorite posts
+        var posts = [RedditPost]()
+        if let postsData = NSUserDefaults.standardUserDefaults().dataForKey("RedditPosts") {
+            posts = NSKeyedUnarchiver.unarchiveObjectWithData(postsData) as! [RedditPost]
+        }
         
-        let alertController = UIAlertController(title: "Success!", message: "Added to your favorites.", preferredStyle: UIAlertControllerStyle.Alert)
+        let alertController: UIAlertController;
+        
+        if !contains(posts, detailPost!) {
+            
+            posts.append(detailPost!)
+            
+            // generate filename for post image
+            let filename = generateImageFilename()
+            detailPost?.filename = filename
+            
+            // save post image to file system
+            let url = documentsURL().URLByAppendingPathComponent(filename)
+            let image = detailPost?.image
+            let imageData = UIImageJPEGRepresentation(image, 0.75)
+            imageData.writeToURL(url, atomically: true)
+            
+            // archive favorite posts
+            let data = NSKeyedArchiver.archivedDataWithRootObject(posts)
+            NSUserDefaults.standardUserDefaults().setObject(data, forKey: "RedditPosts")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            
+            alertController = UIAlertController(title: "Success!", message: "Added to your favorites.", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
+            
+        } else {
+            alertController = UIAlertController(title: nil, message: "This post is already added to your favorites.", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
+        }
         
         self.presentViewController(alertController, animated: true, completion: nil)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
-        
     }
     
     @IBAction func shareIt(sender: AnyObject) {
         
-        var shareText = detailPost?.title as String!
-        var postURL: NSURL = NSURL(string: self.detailPost!.url)!
-        var data: NSData = NSData(contentsOfURL: postURL)!
-        var imageToShare = UIImage(data: data)!
-        var shareArray = [shareText]
-        var imageArray = [imageToShare]
+        let textToShare = detailPost!.title
+        var imageToShare = detailPost!.image!
+        var itemsToShare = [textToShare, imageToShare]
         
-        var activityVC: UIActivityViewController = UIActivityViewController(activityItems: imageArray, applicationActivities: nil)
+        var activityVC: UIActivityViewController = UIActivityViewController(activityItems: itemsToShare, applicationActivities: nil)
         
         activityVC.excludedActivityTypes = [UIActivityTypePrint, UIActivityTypePostToFlickr, UIActivityTypePostToTencentWeibo, UIActivityTypePostToVimeo, UIActivityTypeAddToReadingList, UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard, UIActivityTypeSaveToCameraRoll]
         
@@ -105,5 +115,16 @@ class DetailViewController: UIViewController, UITableViewDelegate {
         //mail is completely fucked...crashes when I try to type...
         //need to combine imageArray and shareArray
         
+    }
+    
+    // MARK: - Helpers
+    
+    func documentsURL() -> NSURL {
+        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        return urls[0] as! NSURL
+    }
+    
+    func generateImageFilename() -> String {
+        return NSUUID().UUIDString.stringByAppendingPathExtension("jpg")!
     }
 }
