@@ -1,0 +1,7 @@
+platform :ios, '8.0'
+pod 'Parse'
+pod 'ParseFacebookUtilsV4'
+pod 'FBSDKCoreKit'
+pod 'FBSDKLoginKit'
+pod 'Bolts'
+pod 'AFNetworking', '~> 2.0'

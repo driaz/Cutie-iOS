@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,27 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.setApplicationId("w4wWk4cjtVdzy45TXCa8o9r8uySuTaG19H9TwQuU", clientKey: "T2OFL2KteOwFjodnkrGDBGJCOHtu9bD4YlfkdEt2")
         
-        PFFacebookUtils.initializeFacebook()
-        
-        if (FBSession.activeSession().state == FBSessionState.CreatedTokenLoaded) {
-            
-            FBSession.openActiveSessionWithReadPermissions(["public_profile", "email", "user_friends"], allowLoginUI: false, completionHandler: { (session, state, error) -> Void in
-                
-                self.sessionStateChanged(session, state: state, error: error)
-            })
-            // Checks to see if token is cached and loads active FBSession if token is still cached
-            
-        }
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         
         return true
     }
     
-    func sessionStateChanged(session:FBSession, state:FBSessionState, error:NSError?) {
-        println("Session state changed? \(state)")
-    }
-    
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-            return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication, withSession:PFFacebookUtils.session())
+        return FBSDKApplicationDelegate.sharedInstance().application(application,
+            openURL: url,
+            sourceApplication: sourceApplication,
+            annotation: annotation)
     }
     
     func applicationWillResignActive(application: UIApplication) {
@@ -57,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
-        FBAppCall.handleDidBecomeActiveWithSession(PFFacebookUtils.session())
+        FBSDKAppEvents.activateApp()
         
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }

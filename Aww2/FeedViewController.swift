@@ -8,19 +8,17 @@
 
 import UIKit
 
-class FeedViewController: UITableViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var footerActivityIndictor: UIActivityIndicatorView!
+    @IBOutlet weak var progressView: UIProgressView!
     
     var isLoadingData = false
     var redditPostArray = [RedditPost]()
     var afterValue: String = String()
     var detailViewControllers = [DetailViewController]()
-    var progress = NSProgress(totalUnitCount: 1)
-    
-    @IBOutlet weak var progressView: UIProgressView!
-    
-    
+    var progress = NSProgress(totalUnitCount: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +28,19 @@ class FeedViewController: UITableViewController, UIPageViewControllerDataSource,
         
         self.tableView.backgroundColor = UIColor.blackColor()
         self.footerActivityIndictor.startAnimating()
+        self.progressView.alpha = 0.0
         
         loadRedditPostsWithImages()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        progress.addObserver(self, forKeyPath: "fractionCompleted", options: .New, context: nil)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        progress.removeObserver(self, forKeyPath: "fractionCompleted")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -74,13 +79,22 @@ class FeedViewController: UITableViewController, UIPageViewControllerDataSource,
             
             var task = BFTask(result: nil)
             
+            self.progress.totalUnitCount = Int64(posts.count)
+            self.progress.completedUnitCount = 0
+            self.progress.becomeCurrentWithPendingUnitCount(0)
+            self.progressView.alpha = 1.0
+            
             for post in posts {
                 task = task.continueWithBlock { (task) -> AnyObject! in
+                    self.progress.resignCurrent()
+                    self.progress.becomeCurrentWithPendingUnitCount(1)
                     return self.loadImageOfPost(post)
                 }
             }
             
             task.continueWithBlock { (task) -> AnyObject! in
+                self.progressView.alpha = 0.0
+                self.progress.resignCurrent()
                 self.isLoadingData = false
                 return nil
             }
@@ -124,8 +138,8 @@ class FeedViewController: UITableViewController, UIPageViewControllerDataSource,
                     (url as NSString).containsString("gallery") == false &&
                     (url as NSString).containsString("new") == false &&
                     (url as NSString).containsString("imgur") == true)  {
-                    
-                    redditPosts.append(post)
+                        
+                        redditPosts.append(post)
                 }
             }
             taskCompletionSource.setResult(redditPosts)
@@ -151,43 +165,60 @@ class FeedViewController: UITableViewController, UIPageViewControllerDataSource,
         var URL = components?.URL
         var request = NSURLRequest(URL: URL!)
         
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { response, data, error in
+        let manager = AFURLSessionManager()
+        manager.responseSerializer = AFHTTPResponseSerializer()
+        
+        let downloadTask = manager.dataTaskWithRequest(request) { (_, data, error) -> Void in
             
-            if (error != nil) {
+            if error != nil {
                 taskCompletionSource.setError(error)
-                return
-            }
-            
-            if let image = UIImage(data: data) {
-                post.image = image
-                let minWidth = min(self.view.bounds.size.width, image.size.width)
-                let minHeight = self.view.bounds.size.height - 20.0 - 44.0 - 49.0
-                post.fittingHeight = min(minHeight, minWidth * image.size.height / image.size.width)
-                self.redditPostArray.append(post)
-                self.tableView.reloadData()
-                if let pageVC = self.navigationController!.topViewController as? UIPageViewController {
-                    // set post for current detail view controller on the page view controller
-                    for detailVC in self.detailViewControllers {
-                        if detailVC.index == self.redditPostArray.count - 1 {
-                            self.configureDetailViewController(detailVC, withPost: post)
+                
+            } else {
+                if let image = UIImage(data: data as! NSData) {
+                    post.image = image
+                    let minWidth = min(self.view.bounds.size.width, image.size.width)
+                    let minHeight = self.view.bounds.size.height - 20.0 - 44.0 - 49.0
+                    post.fittingHeight = min(minHeight, minWidth * image.size.height / image.size.width)
+                    self.redditPostArray.append(post)
+                    self.tableView.reloadData()
+                    if let pageVC = self.navigationController!.topViewController as? UIPageViewController {
+                        // set post for current detail view controller on the page view controller
+                        for detailVC in self.detailViewControllers {
+                            if detailVC.index == self.redditPostArray.count - 1 {
+                                self.configureDetailViewController(detailVC, withPost: post)
+                            }
                         }
                     }
                 }
+                
+                taskCompletionSource.setResult(nil)
             }
-            
-            taskCompletionSource.setResult(nil)
         }
+        
+        let progress = NSProgress(totalUnitCount: 0)
+        
+        manager.setDataTaskDidReceiveResponseBlock { (_, sessionDataTask, response) -> NSURLSessionResponseDisposition in
+            let contentLenght = (response as! NSHTTPURLResponse).allHeaderFields["Content-Length"] as! String
+            progress.totalUnitCount = Int64(contentLenght.toInt()!)
+            return .Allow
+        }
+        
+        manager.setDataTaskDidReceiveDataBlock { (_, sessionDataTask, data) -> Void in
+            progress.completedUnitCount += data.length
+        }
+        
+        downloadTask.resume()
         
         return taskCompletionSource.task
     }
     
     // MARK: - UITableView data source
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return redditPostArray.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! PostCell
         
@@ -196,18 +227,18 @@ class FeedViewController: UITableViewController, UIPageViewControllerDataSource,
         return cell
     }
     
-    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 320.0
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         let post = redditPostArray[indexPath.row]
         
         return post.fittingHeight ?? 320.0
     }
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
         if self.isLoadingData {
             return
         }
@@ -291,5 +322,16 @@ class FeedViewController: UITableViewController, UIPageViewControllerDataSource,
         let post = redditPostArray[indexPath.row]
         cell.titleLabel.text = "  \(post.title)"
         cell.postImageView.image = post.image
+    }
+    
+    // MARK: - NSKeyValueObserving
+    
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+        
+        if keyPath == "fractionCompleted" {
+            dispatch_async(dispatch_get_main_queue(), {
+                self.progressView.progress = Float(self.progress.fractionCompleted)
+            })
+        }
     }
 }
