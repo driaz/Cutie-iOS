@@ -12,13 +12,11 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var footerActivityIndictor: UIActivityIndicatorView!
-    @IBOutlet weak var progressView: UIProgressView!
     
     var isLoadingData = false
     var redditPostArray = [RedditPost]()
     var afterValue: String = String()
     var detailViewControllers = [DetailViewController]()
-    var progress = NSProgress(totalUnitCount: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,19 +26,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         self.tableView.backgroundColor = UIColor.blackColor()
         self.footerActivityIndictor.startAnimating()
-        self.progressView.alpha = 0.0
         
         loadRedditPostsWithImages()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        progress.addObserver(self, forKeyPath: "fractionCompleted", options: .New, context: nil)
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        progress.removeObserver(self, forKeyPath: "fractionCompleted")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -79,22 +66,13 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             var task = BFTask(result: nil)
             
-            self.progress.totalUnitCount = Int64(posts.count)
-            self.progress.completedUnitCount = 0
-            self.progress.becomeCurrentWithPendingUnitCount(0)
-            self.progressView.alpha = 1.0
-            
             for post in posts {
                 task = task.continueWithBlock { (task) -> AnyObject! in
-                    self.progress.resignCurrent()
-                    self.progress.becomeCurrentWithPendingUnitCount(1)
                     return self.loadImageOfPost(post)
                 }
             }
             
             task.continueWithBlock { (task) -> AnyObject! in
-                self.progressView.alpha = 0.0
-                self.progress.resignCurrent()
                 self.isLoadingData = false
                 return nil
             }
@@ -193,18 +171,6 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
                 taskCompletionSource.setResult(nil)
             }
-        }
-        
-        let progress = NSProgress(totalUnitCount: 0)
-        
-        manager.setDataTaskDidReceiveResponseBlock { (_, sessionDataTask, response) -> NSURLSessionResponseDisposition in
-            let contentLenght = (response as! NSHTTPURLResponse).allHeaderFields["Content-Length"] as! String
-            progress.totalUnitCount = Int64(contentLenght.toInt()!)
-            return .Allow
-        }
-        
-        manager.setDataTaskDidReceiveDataBlock { (_, sessionDataTask, data) -> Void in
-            progress.completedUnitCount += data.length
         }
         
         downloadTask.resume()
@@ -322,16 +288,5 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let post = redditPostArray[indexPath.row]
         cell.titleLabel.text = "  \(post.title)"
         cell.postImageView.image = post.image
-    }
-    
-    // MARK: - NSKeyValueObserving
-    
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-        
-        if keyPath == "fractionCompleted" {
-            dispatch_async(dispatch_get_main_queue(), {
-                self.progressView.progress = Float(self.progress.fractionCompleted)
-            })
-        }
     }
 }

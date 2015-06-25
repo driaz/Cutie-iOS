@@ -126,7 +126,11 @@
                             <constraint firstItem="QKy-nu-vBc" firstAttribute="leading" secondItem="e6O-Rr-I3o" secondAttribute="leading" id="mlh-Yv-jcJ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Share Cutie" image="users_two" id="t2z-dS-j3F"/>
+                    <tabBarItem key="tabBarItem" title="Share Cutie" image="users_two" id="t2z-dS-j3F">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="users_two_filled"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -218,20 +222,11 @@
                                     <outlet property="delegate" destination="ILC-Q8-xIB" id="fYY-sD-gya"/>
                                 </connections>
                             </tableView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b4n-ol-PFM">
-                                <rect key="frame" x="0.0" y="64" width="320" height="2"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="2" id="7cy-hf-93b"/>
-                                </constraints>
-                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="b4n-ol-PFM" firstAttribute="leading" secondItem="XfO-nI-CjI" secondAttribute="leading" id="9u7-jz-ejm"/>
                             <constraint firstAttribute="trailing" secondItem="pgW-0z-lex" secondAttribute="trailing" id="Hmv-pH-Ngv"/>
-                            <constraint firstItem="b4n-ol-PFM" firstAttribute="top" secondItem="pig-la-64y" secondAttribute="bottom" id="Ito-Vw-KsU"/>
                             <constraint firstItem="pgW-0z-lex" firstAttribute="top" secondItem="XfO-nI-CjI" secondAttribute="top" id="MLQ-Oi-USx"/>
-                            <constraint firstAttribute="trailing" secondItem="b4n-ol-PFM" secondAttribute="trailing" id="bmy-9M-97O"/>
                             <constraint firstAttribute="bottom" secondItem="pgW-0z-lex" secondAttribute="bottom" id="fEg-Oa-YSg"/>
                             <constraint firstItem="pgW-0z-lex" firstAttribute="leading" secondItem="XfO-nI-CjI" secondAttribute="leading" id="lWB-eb-o3S"/>
                         </constraints>
@@ -239,7 +234,6 @@
                     <navigationItem key="navigationItem" id="W6f-8u-q8D"/>
                     <connections>
                         <outlet property="footerActivityIndictor" destination="UeP-S0-U7R" id="wpy-sC-7SU"/>
-                        <outlet property="progressView" destination="b4n-ol-PFM" id="qTr-KZ-OKz"/>
                         <outlet property="tableView" destination="pgW-0z-lex" id="MrA-u5-NEj"/>
                     </connections>
                 </viewController>
@@ -355,7 +349,11 @@
         <scene sceneID="p9L-hJ-LwC">
             <objects>
                 <navigationController id="NdL-Pc-nxv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="paw_print" id="9VE-uL-6tn"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="paw_print" id="9VE-uL-6tn">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="paw_print_filled"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="n0T-Tz-2ud">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -372,7 +370,11 @@
         <scene sceneID="kmU-dP-b9o">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OAh-Gh-GbE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="heart" id="1ip-cS-cxi"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="heart" id="1ip-cS-cxi">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="heart_filled"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tTt-w6-rk1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -447,9 +449,12 @@
     <resources>
         <image name="LVC" width="375" height="667"/>
         <image name="heart" width="32" height="32"/>
+        <image name="heart_filled" width="32" height="32"/>
         <image name="paw_print" width="32" height="32"/>
+        <image name="paw_print_filled" width="32" height="32"/>
         <image name="shareImage" width="375" height="667"/>
         <image name="users_two" width="32" height="32"/>
+        <image name="users_two_filled" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

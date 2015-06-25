@@ -19,18 +19,12 @@ class ReferralViewController: UIViewController {
         shareActivityVC.excludedActivityTypes = [UIActivityTypePrint, UIActivityTypePostToFlickr, UIActivityTypePostToTencentWeibo, UIActivityTypePostToVimeo, UIActivityTypeAddToReadingList, UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard, UIActivityTypeSaveToCameraRoll]
         
         self.presentViewController(shareActivityVC, animated: true, completion: nil)
-        
-    
-        println("testing connection")
-    
     }
     
     @IBOutlet weak var shareButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarItem.selectedImage = UIImage(named: "users_two_filled")
-
         // Do any additional setup after loading the view.
     }
 
