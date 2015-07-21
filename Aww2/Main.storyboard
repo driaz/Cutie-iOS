@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="h2Q-RZ-1sN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="h2Q-RZ-1sN">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KdJ-7b-I36" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="30" y="512" width="260" height="40"/>
+                                <rect key="frame" x="30" y="499" width="260" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="UGQ-II-z0Y"/>
@@ -30,7 +30,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KI1-gO-R2t" firstAttribute="top" secondItem="KdJ-7b-I36" secondAttribute="bottom" constant="16" id="4be-bt-B32"/>
+                            <constraint firstItem="KI1-gO-R2t" firstAttribute="top" secondItem="KdJ-7b-I36" secondAttribute="bottom" constant="29" id="4be-bt-B32"/>
                             <constraint firstItem="TdA-KY-eSe" firstAttribute="top" secondItem="6qO-qW-OgK" secondAttribute="top" id="Kcf-ak-4ro"/>
                             <constraint firstItem="TdA-KY-eSe" firstAttribute="leading" secondItem="6qO-qW-OgK" secondAttribute="leading" id="Pub-hk-ZlP"/>
                             <constraint firstAttribute="trailing" secondItem="TdA-KY-eSe" secondAttribute="trailing" id="aGx-yf-c7l"/>
@@ -44,7 +44,6 @@
                     <connections>
                         <outlet property="BackgroundImage" destination="TdA-KY-eSe" id="AqZ-A1-mTx"/>
                         <outlet property="fbLoginButton" destination="KdJ-7b-I36" id="q7T-hM-gqT"/>
-                        <segue destination="NFA-22-3Ay" kind="modal" identifier="showTBVC" id="gwu-0Y-bNk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m4e-Cv-gbg" userLabel="First Responder" sceneMemberID="firstResponder"/>

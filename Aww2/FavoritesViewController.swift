@@ -49,6 +49,14 @@ class FavoritesViewController: UITableViewController, UIPageViewControllerDataSo
     
     // MARK: - Navigation
     
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if identifier == "showPageViewController" && posts.count == 0 {
+            return false
+        }
+        
+        return true
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "showPageViewController" {
@@ -73,14 +81,19 @@ class FavoritesViewController: UITableViewController, UIPageViewControllerDataSo
     // MARK: - UITableView data source
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        let count = posts.count
+        return count > 0 ? count : 1
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("FavoriteCell") as! PostCell
         
-        configureRedditCell(cell, atIndexPath: indexPath)
+        if posts.count > 0 {
+            configureRedditCell(cell, atIndexPath: indexPath)
+        } else {
+            configureEmptyFavoritesCell(cell, atIndexPath: indexPath)
+        }
         
         return cell
     }
@@ -91,9 +104,12 @@ class FavoritesViewController: UITableViewController, UIPageViewControllerDataSo
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-        let post = posts[indexPath.row]
-        
-        return post.fittingHeight ?? 320.0
+        if posts.count > 0 {
+            let post = posts[indexPath.row]
+            return post.fittingHeight ?? 320.0
+        } else {
+            return 320.0
+        }
     }
     
     // MARK: - UIPageViewController data source
@@ -145,6 +161,12 @@ class FavoritesViewController: UITableViewController, UIPageViewControllerDataSo
         let post = posts[indexPath.row]
         cell.titleLabel.text = "  \(post.title)"
         cell.postImageView.image = post.image
+    }
+    
+    func configureEmptyFavoritesCell(cell: PostCell, atIndexPath indexPath: NSIndexPath) {
+        
+        cell.titleLabel.text = "Currently you have no favorites, please add some."
+        cell.postImageView.image = UIImage(named: "loading")
     }
     
     func configureDetailViewController(detailVC: DetailViewController, withPost post: RedditPost) {

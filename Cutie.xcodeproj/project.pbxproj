@@ -238,7 +238,7 @@
 				TargetAttributes = {
 					42A4F7EA1A206F0100693ED2 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = F5Q277ZC7R;
+						DevelopmentTeam = 74C2W9359H;
 					};
 					42A4F7FF1A206F0100693ED2 = {
 						CreatedOnToolsVersion = 6.1;
@@ -438,7 +438,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ramzi Benna (36D6M7ED2G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -447,7 +447,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Cutie;
-				PROVISIONING_PROFILE = "92468747-823d-421b-b521-9caee516fd8e";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Aww2-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -469,7 +469,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Cutie;
-				PROVISIONING_PROFILE = "92468747-823d-421b-b521-9caee516fd8e";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Aww2-Bridging-Header.h";
 			};
 			name = Release;
