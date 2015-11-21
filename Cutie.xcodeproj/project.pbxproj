@@ -21,6 +21,7 @@
 		42D670E41AEF04CF00628939 /* CutieButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D670E31AEF04CF00628939 /* CutieButton.swift */; };
 		42E7B6201A6B6FE200941E5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E7B61F1A6B6FE200941E5D /* LoginViewController.swift */; };
 		7776C63269B30EDB3A49FA89 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1094D2B9F63BB53DA6F32E /* libPods.a */; };
+		834CA8831C00602A003F0055 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 834CA8821C00602A003F0055 /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		42D670E31AEF04CF00628939 /* CutieButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CutieButton.swift; sourceTree = "<group>"; };
 		42E7B61F1A6B6FE200941E5D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
 		4E1094D2B9F63BB53DA6F32E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		834CA8821C00602A003F0055 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		8502BC6DBB9197B511A91626 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		94D045EC4B5070874EE75D8B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +136,7 @@
 				42A4F7F01A206F0100693ED2 /* AppDelegate.swift */,
 				42BFD6F81AE6F9B70061E807 /* SwiftyJSON.swift */,
 				42B8E9BC1A9D8B5E005BD02C /* Main.storyboard */,
+				834CA8821C00602A003F0055 /* LaunchScreen.xib */,
 				4252F2451AAFC4A5008B135F /* Images.xcassets */,
 				2D24AB4F1B28F73200075146 /* Controllers */,
 				2D24AB501B28F74100075146 /* Views */,
@@ -271,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42B8E9BD1A9D8B5E005BD02C /* Main.storyboard in Resources */,
+				834CA8831C00602A003F0055 /* LaunchScreen.xib in Resources */,
 				4252F2461AAFC4A5008B135F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
