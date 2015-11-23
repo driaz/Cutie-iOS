@@ -149,7 +149,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let downloadTask = manager.dataTaskWithRequest(request) { (_, data, error) -> Void in
             
             if error != nil {
-                taskCompletionSource.setError(error)
+                taskCompletionSource.setError(error!)
                 
             } else {
                 if let image = UIImage(data: data as! NSData) {
